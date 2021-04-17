@@ -1,2 +1,9 @@
 # GrupoPI3
-Projeto Integrador - 3º semestre - TADS - SENAC
+
+Locadora de Veículos TADS - Turma B
+
+Integrantes:
+
+Dalila Di Lazzaro;
+Jeferson Davi de Oliveira;
+João Pedro Santos.
