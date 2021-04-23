@@ -1,4 +1,4 @@
-package br.sp.senac.util;
+package br.sp.senac.tads.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

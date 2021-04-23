@@ -1,4 +1,10 @@
+<%-- 
+    Document   : home
+    Created on : 22 de abr de 2021, 21:03:54
+    Author     : Administrador
+--%>
 
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!doctype html>
 <html lang="pt-br">
   <head>

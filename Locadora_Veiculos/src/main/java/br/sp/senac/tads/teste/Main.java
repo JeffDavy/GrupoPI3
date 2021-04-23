@@ -1,4 +1,4 @@
-package br.sp.senac.teste;
+package br.sp.senac.tads.teste;
 
 /**
  *
