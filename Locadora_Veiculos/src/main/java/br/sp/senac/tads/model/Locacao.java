@@ -4,7 +4,7 @@ package br.sp.senac.tads.model;
  *
  * @author Jeefrson Davi
  */
-public class LocacaoModel {
+public class Locacao {
     
     private int codLocacao;
     private String dataLocacao;
@@ -14,10 +14,10 @@ public class LocacaoModel {
     private String cpfResponsavel;
     private String dataNascimento;
 
-    public LocacaoModel() {
+    public Locacao() {
     }
 
-    public LocacaoModel(int codLocacao, String dataLocacao, double valorTotal, String dataDevolucao, String nomeResponsavel, String cpfResponsavel, String dataNascimento) {
+    public Locacao(int codLocacao, String dataLocacao, double valorTotal, String dataDevolucao, String nomeResponsavel, String cpfResponsavel, String dataNascimento) {
         this.codLocacao = codLocacao;
         this.dataLocacao = dataLocacao;
         this.valorTotal = valorTotal;

@@ -88,6 +88,7 @@ public class Conexao {
      * @return STATUS  
      */
     public static String getStatusConexao() {
+        System.out.println("Status: " + status);
         return status;
     }
 
