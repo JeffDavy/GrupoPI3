@@ -1,7 +1,5 @@
 CREATE DATABASE locadora_veiculos;
 
-#drop database locadora_veiculos;
-
 USE locadora_veiculos;
 
 CREATE TABLE Enderecos (
@@ -33,9 +31,12 @@ CREATE TABLE Veiculos (
   quilometragem BIGINT NOT NULL,
   revisao TINYINT UNSIGNED NOT NULL,
   valorVeiculo DOUBLE NOT NULL,
-  statusVeiculo TINYINT UNSIGNED NOT NULL,
+  statusVeiculo TINYINT UNSIGNED NOT NULL DEFAULT 1,
   PRIMARY KEY(codVeiculo)
 );
+
+select * from Veiculos where codVeiculo = 1;
+
 
 CREATE TABLE Funcionarios (
   codFuncionario INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
