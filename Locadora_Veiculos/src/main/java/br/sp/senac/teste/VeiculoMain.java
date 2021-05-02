@@ -8,17 +8,16 @@ import java.util.ArrayList;
  *
  * @author Jeferson Davi
  */
-public class Main {
-        
-    
-    
-    
+public class VeiculoMain {
+
     public static void main(String[] args) {
-        
+
         Veiculo veiculoBean = new Veiculo();
         VeiculoController veiculoControl = new VeiculoController();
-        
-        /** CADASTRAR VEÍCULO */
+
+        /**
+         * CADASTRAR VEÍCULO
+         */
 //        veiculoBean.setMarca("Volks");
 //        veiculoBean.setModelo("Fox");
 //        veiculoBean.setAno(2014);
@@ -30,9 +29,9 @@ public class Main {
 //        veiculoBean.setStatusVeiculo("1");
 //        
 //        veiculoControl.cadastrarVeiculoController(veiculoBean);
-        
-    
-        /** EDITAR VEÍCULO */
+        /**
+         * EDITAR VEÍCULO
+         */
 //        veiculoBean.setMarca("Yamaha");
 //        veiculoBean.setModelo("Crosser");
 //        veiculoBean.setAno(2019);
@@ -44,45 +43,36 @@ public class Main {
 //        veiculoBean.setCodVeiculo(1);
 //        
 //        veiculoControl.alterarVeiculoController(veiculoBean);
-        
-        /** DESATIVAR E ATIVAR UM VEÍCULO */ 
-        
-            /** ATIVAR VEÍCULO */ 
+        /**
+         * DESATIVAR E ATIVAR UM VEÍCULO
+         */
+        /**
+         * ATIVAR VEÍCULO
+         */
 //            veiculoBean.setStatusVeiculo("1");
 //            veiculoBean.setCodVeiculo(1);
 //
 //            veiculoControl.statusVeiculoController(veiculoBean);
-
-            
-            /** DESATIVAR VEÍCULO */ 
+        /**
+         * DESATIVAR VEÍCULO
+         */
 //            veiculoBean.setStatusVeiculo("0");
 //            veiculoBean.setCodVeiculo(1);
 //
 //            veiculoControl.statusVeiculoController(veiculoBean);
-
-        
-        veiculoBean.setCodVeiculo(1);
-
-         ArrayList<Veiculo> listaVeiculo = new ArrayList<Veiculo>();
-         
-         listaVeiculo = veiculoControl.consultarVeiculoController(veiculoBean);
-         
-        for (int i = 0; i < listaVeiculo.size(); i++) {
-    System.out.println("aula : " + listaVeiculo.get(i));
-}
-
-             
-            
-
-
-        
-        
-        
-        
         
     
+        /** LISTAR VEÍCULOS*/
+//        veiculoBean.setCodVeiculo(1);
+//
+//        ArrayList<Veiculo> listaVeiculo = new ArrayList<Veiculo>();
+//
+//        listaVeiculo = veiculoControl.consultarVeiculoController(veiculoBean);
+//
+//        for (int i = 0; i < listaVeiculo.size(); i++) {
+//            System.out.println("aula : " + listaVeiculo.get(i));
+//        }
 
-        
     }
-    
+
 }

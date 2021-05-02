@@ -6,7 +6,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -143,7 +142,7 @@ public class VeiculoDAO {
 
     }
 
-    public ArrayList<Veiculo> consultarVeiculo(Veiculo veicuoBean) {
+    public ArrayList<Veiculo> consultarVeiculo(Veiculo veiculoBean) {
 
         ResultSet rs = null;
         PreparedStatement instrucaoSQL = null;
@@ -159,7 +158,7 @@ public class VeiculoDAO {
 
             instrucaoSQL = conexao.prepareStatement(sql);
 
-            instrucaoSQL.setInt(1, veicuoBean.getCodVeiculo());
+            instrucaoSQL.setInt(1, veiculoBean.getCodVeiculo());
 
             rs = instrucaoSQL.executeQuery();
 
@@ -212,7 +211,7 @@ public class VeiculoDAO {
 
     }
 
-    public ArrayList<Veiculo> listarVeiculos() {
+    public ArrayList<Veiculo> listarVeiculos(Veiculo veiculoBean) {
 
         ResultSet rs = null;
         PreparedStatement instrucaoSQL = null;
@@ -224,9 +223,11 @@ public class VeiculoDAO {
             Class.forName(DRIVER);
             conexao = Conexao.abrirConexao();
 
-            String sql = "select * from Veiculos";
+            String sql = "select * from Veiculos where statusVeiculo = ?";
 
             instrucaoSQL = conexao.prepareStatement(sql);
+            
+            instrucaoSQL.setString(1, veiculoBean.getStatusVeiculo());
 
             rs = instrucaoSQL.executeQuery();
             

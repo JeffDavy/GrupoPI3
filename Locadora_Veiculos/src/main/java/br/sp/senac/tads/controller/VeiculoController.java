@@ -33,7 +33,7 @@ public class VeiculoController {
         
     }
     
-    public ArrayList consultarVeiculoController(Veiculo veiculoBean) {
+    public ArrayList consultarVeiculosController(Veiculo veiculoBean) {
         
         ArrayList<Veiculo> listaVeiculo = new ArrayList<Veiculo>();
         
