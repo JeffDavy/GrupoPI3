@@ -1,30 +1,23 @@
 package br.sp.senac.tads.model;
 
+import java.sql.Date;
+
 /**
  *
  * @author Jeefrson Davi
  */
-public class LocacaoModel {
+public class Locacao {
     
     private int codLocacao;
-    private String dataLocacao;
+    private int codFuncionario;
+    private int codCliente;
+    private Date dataLocacao;
     private double valorTotal;
-    private String dataDevolucao;
     private String nomeResponsavel;
     private String cpfResponsavel;
-    private String dataNascimento;
+    private Date dataNascimento;
 
-    public LocacaoModel() {
-    }
-
-    public LocacaoModel(int codLocacao, String dataLocacao, double valorTotal, String dataDevolucao, String nomeResponsavel, String cpfResponsavel, String dataNascimento) {
-        this.codLocacao = codLocacao;
-        this.dataLocacao = dataLocacao;
-        this.valorTotal = valorTotal;
-        this.dataDevolucao = dataDevolucao;
-        this.nomeResponsavel = nomeResponsavel;
-        this.cpfResponsavel = cpfResponsavel;
-        this.dataNascimento = dataNascimento;
+    public Locacao() {
     }
 
     public int getCodLocacao() {
@@ -35,11 +28,27 @@ public class LocacaoModel {
         this.codLocacao = codLocacao;
     }
 
-    public String getDataLocacao() {
+    public int getCodFuncionario() {
+        return codFuncionario;
+    }
+
+    public void setCodFuncionario(int codFuncionario) {
+        this.codFuncionario = codFuncionario;
+    }
+
+    public int getCodCliente() {
+        return codCliente;
+    }
+
+    public void setCodCliente(int codCliente) {
+        this.codCliente = codCliente;
+    }
+
+    public Date getDataLocacao() {
         return dataLocacao;
     }
 
-    public void setDataLocacao(String dataLocacao) {
+    public void setDataLocacao(Date dataLocacao) {
         this.dataLocacao = dataLocacao;
     }
 
@@ -49,14 +58,6 @@ public class LocacaoModel {
 
     public void setValorTotal(double valorTotal) {
         this.valorTotal = valorTotal;
-    }
-
-    public String getDataDevolucao() {
-        return dataDevolucao;
-    }
-
-    public void setDataDevolucao(String dataDevolucao) {
-        this.dataDevolucao = dataDevolucao;
     }
 
     public String getNomeResponsavel() {
@@ -75,14 +76,12 @@ public class LocacaoModel {
         this.cpfResponsavel = cpfResponsavel;
     }
 
-    public String getDataNascimento() {
+    public Date getDataNascimento() {
         return dataNascimento;
     }
 
-    public void setDataNascimento(String dataNascimento) {
+    public void setDataNascimento(Date dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
-
-    
     
 }

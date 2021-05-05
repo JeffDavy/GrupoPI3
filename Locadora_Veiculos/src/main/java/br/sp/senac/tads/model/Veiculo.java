@@ -4,7 +4,7 @@ package br.sp.senac.tads.model;
  *
  * @author Jeferson Davi
  */
-public class VeiculoModel {
+public class Veiculo {
     
     private int codVeiculo;
     private String marca;
@@ -12,15 +12,15 @@ public class VeiculoModel {
     private int ano;
     private String placa;
     private String cor;
-    private String quilometragem;
-    private boolean revisao;
+    private int quilometragem;
+    private String revisao;
     private double valorVeiculo;
-    private boolean statusVeiculo;
+    private String statusVeiculo;
 
-    public VeiculoModel() {
+    public Veiculo() {
     }
 
-    public VeiculoModel(int codVeiculo, String marca, String modelo, int ano, String placa, String cor, String quilometragem, boolean revisao, double valorVeiculo, boolean statusVeiculo) {
+    public Veiculo(int codVeiculo, String marca, String modelo, int ano, String placa, String cor, int quilometragem, String revisao, double valorVeiculo, String statusVeiculo) {
         this.codVeiculo = codVeiculo;
         this.marca = marca;
         this.modelo = modelo;
@@ -81,19 +81,19 @@ public class VeiculoModel {
         this.cor = cor;
     }
 
-    public String getQuilometragem() {
+    public int getQuilometragem() {
         return quilometragem;
     }
 
-    public void setQuilometragem(String quilometragem) {
+    public void setQuilometragem(int quilometragem) {
         this.quilometragem = quilometragem;
     }
 
-    public boolean isRevisao() {
+    public String getRevisao() {
         return revisao;
     }
 
-    public void setRevisao(boolean revisao) {
+    public void setRevisao(String revisao) {
         this.revisao = revisao;
     }
 
@@ -105,11 +105,11 @@ public class VeiculoModel {
         this.valorVeiculo = valorVeiculo;
     }
 
-    public boolean isStatusVeiculo() {
+    public String getStatusVeiculo() {
         return statusVeiculo;
     }
 
-    public void setStatusVeiculo(boolean statusVeiculo) {
+    public void setStatusVeiculo(String statusVeiculo) {
         this.statusVeiculo = statusVeiculo;
     }
     

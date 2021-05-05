@@ -1,4 +1,4 @@
-package br.sp.senac.tads.util;
+package br.sp.senac.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -88,6 +88,7 @@ public class Conexao {
      * @return STATUS  
      */
     public static String getStatusConexao() {
+        System.out.println("Status: " + status);
         return status;
     }
 
