@@ -1,8 +1,8 @@
 package br.sp.senac.tads.controller;
 
-import br.sp.senac.tads.dao.FuncionarioDAO;
-import br.sp.senac.tads.model.Funcionario;
-import br.sp.senac.tads.model.Login;
+import br.sp.senac.tads.model.FuncionarioDAO;
+import br.sp.senac.tads.bean.Funcionario;
+import br.sp.senac.tads.bean.Login;
 import java.util.ArrayList;
 
 /**
@@ -17,13 +17,17 @@ public class FuncionarioController {
     public FuncionarioController() {
     }
     
-    public void cadastrarFuncionarioController(Funcionario funcBean, Login loginBean, String tipo) {
+    public boolean cadastrarFuncionarioController(Funcionario funcBean, Login loginBean, String tipo) {
+        
+        boolean status = false;
         
         int codLogin = loginController.cadastrarLoginController(loginBean, tipo);
         
         funcBean.setCodLogin(codLogin);
         
-        funcionarioDAO.cadastrarFuncionario(funcBean);
+        status = funcionarioDAO.cadastrarFuncionario(funcBean);
+        
+        return status;
         
     }
     

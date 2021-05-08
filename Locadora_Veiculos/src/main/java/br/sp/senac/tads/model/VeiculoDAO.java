@@ -1,6 +1,6 @@
-package br.sp.senac.tads.dao;
+package br.sp.senac.tads.model;
 
-import br.sp.senac.tads.model.Veiculo;
+import br.sp.senac.tads.bean.Veiculo;
 import br.sp.senac.util.Conexao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -23,8 +23,9 @@ public class VeiculoDAO {
     public VeiculoDAO() {
     }
 
-    public void cadastrarVeiculo(Veiculo veiculoBean) {
-
+    public boolean cadastrarVeiculo(Veiculo veiculoBean) {
+        
+        boolean status = false;
         try {
 
             Class.forName(DRIVER);
@@ -45,20 +46,20 @@ public class VeiculoDAO {
             int linhasAfetadas = instrucaoSQL.executeUpdate();
 
             if (linhasAfetadas > 0) {
-                System.out.println("Cadastrado!");
-
+                return true;                
+                
             } else {
                 throw new Exception();
 
             }
 
-            conexao.close();
-
         } catch (Exception e) {
             System.out.println("Erro ao iniciar conexão com o BD");
 
         }
-
+        
+        return status;
+        
     }
 
     public void alterarVeiculo(Veiculo veiculoBean) {

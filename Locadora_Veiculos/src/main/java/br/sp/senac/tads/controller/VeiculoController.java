@@ -1,7 +1,7 @@
 package br.sp.senac.tads.controller;
 
-import br.sp.senac.tads.dao.VeiculoDAO;
-import br.sp.senac.tads.model.Veiculo;
+import br.sp.senac.tads.model.VeiculoDAO;
+import br.sp.senac.tads.bean.Veiculo;
 import java.util.ArrayList;
 
 /**
@@ -15,10 +15,11 @@ public class VeiculoController {
     public VeiculoController() {
     }
     
-    public void cadastrarVeiculoController(Veiculo veiculoBean) {
+    public boolean cadastrarVeiculoController(Veiculo veiculoBean) {
         
-        veiculoDAO.cadastrarVeiculo(veiculoBean);
+        boolean status = veiculoDAO.cadastrarVeiculo(veiculoBean);
         
+        return status;
     }
     
     public void alterarVeiculoController(Veiculo veiculoBean) {

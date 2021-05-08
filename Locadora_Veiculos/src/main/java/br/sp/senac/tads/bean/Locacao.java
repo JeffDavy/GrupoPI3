@@ -1,4 +1,4 @@
-package br.sp.senac.tads.model;
+package br.sp.senac.tads.bean;
 
 import java.sql.Date;
 

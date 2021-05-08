@@ -3,9 +3,9 @@ package br.sp.senac.teste;
 import br.sp.senac.tads.controller.ClienteController;
 import br.sp.senac.tads.controller.FuncionarioController;
 import br.sp.senac.tads.controller.LocacaoController;
-import br.sp.senac.tads.model.Cliente;
-import br.sp.senac.tads.model.Funcionario;
-import br.sp.senac.tads.model.Locacao;
+import br.sp.senac.tads.bean.Cliente;
+import br.sp.senac.tads.bean.Funcionario;
+import br.sp.senac.tads.bean.Locacao;
 
 /**
  *

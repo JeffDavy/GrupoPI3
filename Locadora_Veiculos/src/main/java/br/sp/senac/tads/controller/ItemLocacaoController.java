@@ -1,7 +1,7 @@
 package br.sp.senac.tads.controller;
 
-import br.sp.senac.tads.dao.ItemLocacaoDAO;
-import br.sp.senac.tads.model.ItemLocacao;
+import br.sp.senac.tads.model.ItemLocacaoDAO;
+import br.sp.senac.tads.bean.ItemLocacao;
 import java.util.ArrayList;
 
 /**

@@ -1,8 +1,8 @@
 package br.sp.senac.teste;
 
 import br.sp.senac.tads.controller.FuncionarioController;
-import br.sp.senac.tads.model.Funcionario;
-import br.sp.senac.tads.model.Login;
+import br.sp.senac.tads.bean.Funcionario;
+import br.sp.senac.tads.bean.Login;
 
 /**
  *

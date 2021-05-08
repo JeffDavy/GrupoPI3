@@ -1,7 +1,7 @@
 package br.sp.senac.tads.controller;
 
-import br.sp.senac.tads.dao.LoginDAO;
-import br.sp.senac.tads.model.Login;
+import br.sp.senac.tads.model.LoginDAO;
+import br.sp.senac.tads.bean.Login;
 import java.util.ArrayList;
 
 /**

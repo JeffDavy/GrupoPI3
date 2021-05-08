@@ -1,7 +1,7 @@
 package br.sp.senac.teste;
 
 import br.sp.senac.tads.controller.VeiculoController;
-import br.sp.senac.tads.model.Veiculo;
+import br.sp.senac.tads.bean.Veiculo;
 import java.util.ArrayList;
 
 /**

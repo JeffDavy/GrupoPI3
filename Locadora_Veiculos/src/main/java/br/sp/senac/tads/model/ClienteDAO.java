@@ -1,6 +1,6 @@
-package br.sp.senac.tads.dao;
+package br.sp.senac.tads.model;
 
-import br.sp.senac.tads.model.Cliente;
+import br.sp.senac.tads.bean.Cliente;
 import br.sp.senac.util.Conexao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -23,8 +23,10 @@ public class ClienteDAO {
     public ClienteDAO() {
     }
     
-    public void cadastrarCliente(Cliente clienteBean) {
+    public boolean cadastrarCliente(Cliente clienteBean) {
                
+        boolean status = false;
+        
         try {
             
             Class.forName(DRIVER);
@@ -52,20 +54,20 @@ public class ClienteDAO {
             int linhasAfetadas = instrucaoSQL.executeUpdate();
 
             if (linhasAfetadas > 0) {
-                System.out.println("Cliente Cadastrado!");
-
+                status = true;
+                
             } else {
                 throw new Exception();
 
             }
 
-            conexao.close();
-            
-            
+                        
         } catch (Exception e) {
             System.out.println("Erro ao iniciar conexão com o BD");
             
         }
+        
+        return status;
         
     }
     

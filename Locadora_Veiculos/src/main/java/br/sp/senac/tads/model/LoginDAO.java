@@ -1,7 +1,7 @@
-package br.sp.senac.tads.dao;
+package br.sp.senac.tads.model;
 
-import br.sp.senac.tads.model.Login;
-import br.sp.senac.tads.model.Veiculo;
+import br.sp.senac.tads.bean.Login;
+import br.sp.senac.tads.bean.Veiculo;
 import br.sp.senac.util.Conexao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

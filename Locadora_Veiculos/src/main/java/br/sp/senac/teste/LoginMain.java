@@ -1,8 +1,8 @@
 package br.sp.senac.teste;
 
 import br.sp.senac.tads.controller.LoginController;
-import br.sp.senac.tads.dao.LoginDAO;
-import br.sp.senac.tads.model.Login;
+import br.sp.senac.tads.model.LoginDAO;
+import br.sp.senac.tads.bean.Login;
 
 /**
  *

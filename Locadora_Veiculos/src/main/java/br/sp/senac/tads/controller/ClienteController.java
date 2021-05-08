@@ -1,8 +1,8 @@
 package br.sp.senac.tads.controller;
 
-import br.sp.senac.tads.dao.ClienteDAO;
-import br.sp.senac.tads.model.Cliente;
-import br.sp.senac.tads.model.Login;
+import br.sp.senac.tads.model.ClienteDAO;
+import br.sp.senac.tads.bean.Cliente;
+import br.sp.senac.tads.bean.Login;
 import java.util.ArrayList;
 
 /**
@@ -17,13 +17,17 @@ public class ClienteController {
     public ClienteController() {
     }
     
-    public void cadastrarClienteController(Cliente clienteBean, Login loginBean) {
+    public boolean cadastrarClienteController(Cliente clienteBean, Login loginBean) {
+        
+        boolean status = false;
         
         int codLogin = loginController.cadastrarLoginController(loginBean, "c");
         
         clienteBean.setCodLogin(codLogin);
         
-        clienteDAO.cadastrarCliente(clienteBean);
+        status = clienteDAO.cadastrarCliente(clienteBean);
+        
+        return status;
         
     }
     

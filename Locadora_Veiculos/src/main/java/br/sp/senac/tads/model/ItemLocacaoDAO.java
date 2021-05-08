@@ -1,6 +1,6 @@
-package br.sp.senac.tads.dao;
+package br.sp.senac.tads.model;
 
-import br.sp.senac.tads.model.ItemLocacao;
+import br.sp.senac.tads.bean.ItemLocacao;
 import br.sp.senac.util.Conexao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.sp.senac.tads.dao;
+package br.sp.senac.tads.model;
 
-import br.sp.senac.tads.model.RelatorioModel;
+import br.sp.senac.tads.bean.RelatorioModel;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;

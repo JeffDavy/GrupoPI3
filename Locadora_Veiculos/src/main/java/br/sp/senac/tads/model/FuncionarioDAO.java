@@ -1,6 +1,6 @@
-package br.sp.senac.tads.dao;
+package br.sp.senac.tads.model;
 
-import br.sp.senac.tads.model.Funcionario;
+import br.sp.senac.tads.bean.Funcionario;
 import br.sp.senac.util.Conexao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -23,7 +23,9 @@ public class FuncionarioDAO {
     public FuncionarioDAO() {
     }
     
-    public void cadastrarFuncionario(Funcionario funcBean) {
+    public boolean cadastrarFuncionario(Funcionario funcBean) {
+        
+        boolean status = false;
         
         try {
             
@@ -42,20 +44,19 @@ public class FuncionarioDAO {
             int linhasAfetadas = instrucaoSQL.executeUpdate();
 
             if (linhasAfetadas > 0) {
-                System.out.println("Funcionário Cadastrado!");
-
+                status = true;
+                
             } else {
                 throw new Exception();
 
             }
-
-            conexao.close();
             
         } catch (Exception e) {
             System.out.println("Erro ao iniciar conexão com o BD");
             
         }
         
+        return status;
         
     }
     
