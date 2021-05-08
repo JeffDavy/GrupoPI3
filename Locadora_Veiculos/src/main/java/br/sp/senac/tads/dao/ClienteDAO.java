@@ -113,49 +113,9 @@ public class ClienteDAO {
         
     }
     
-    public void desativarAtivarCliente(Cliente clienteBean) {
-        
-        try {
-            
-            Class.forName(DRIVER);
-            conexao = Conexao.abrirConexao();
-
-            String sql = "update Clientes set statusCliente = ? where codCliente = ?";
-
-            PreparedStatement instrucaoSQL = conexao.prepareStatement(sql);
-            
-            instrucaoSQL.setString(1, clienteBean.getStatusCLiente());
-            instrucaoSQL.setInt(2, clienteBean.getCodCliente());
-            
-            int linhasAfetadas = instrucaoSQL.executeUpdate();
-
-            if (linhasAfetadas > 0) {
-
-                if (clienteBean.getStatusCLiente().equals("1")) {
-                    System.out.println("Cliente ATIVADO!");
-
-                } else {
-                    System.out.println("Cliente DESATIVADO!");
-
-                }
-
-            } else {
-                throw new Exception();
-
-            }
-
-            conexao.close();
-            
-            
-        } catch (Exception e) {
-            System.out.println("Erro ao iniciar conexão com o BD");
-            
-        }
-        
-    }
+    /** Remover Cliente */
     
     public boolean validarCliente(Cliente clienteBean) {
-        
         
         boolean status = false;
         ResultSet rs = null;
@@ -231,7 +191,6 @@ public class ClienteDAO {
                 cliente.setEmail(rs.getString("email"));
                 cliente.setContato1(rs.getString("contato1"));
                 cliente.setContato2(rs.getString("contato2"));
-                cliente.setStatusCLiente(rs.getString("statusCliente"));
                 cliente.setRua(rs.getString("rua"));
                 cliente.setNumero(rs.getInt("numero"));
                 cliente.setBairro(rs.getString("bairro"));
@@ -287,12 +246,10 @@ public class ClienteDAO {
             Class.forName(DRIVER);
             conexao = Conexao.abrirConexao();
 
-            String sql = "select * from Clientes where statusCliente = ?";
+            String sql = "select * from Clientes";
 
             instrucaoSQL = conexao.prepareStatement(sql);
             
-            instrucaoSQL.setString(1, clienteBean.getStatusCLiente());
-
             rs = instrucaoSQL.executeQuery();
             
             while (rs.next()) {
@@ -308,7 +265,6 @@ public class ClienteDAO {
                 cliente.setEmail(rs.getString("email"));
                 cliente.setContato1(rs.getString("contato1"));
                 cliente.setContato2(rs.getString("contato2"));
-                cliente.setStatusCLiente(rs.getString("statusCliente"));
                 cliente.setRua(rs.getString("rua"));
                 cliente.setNumero(rs.getInt("numero"));
                 cliente.setBairro(rs.getString("bairro"));
@@ -347,6 +303,61 @@ public class ClienteDAO {
         }
         
         return listaCliente;
+        
+    }
+    
+    public int pegarId(Cliente clienteBean) {
+        
+        int id = 0;
+        ResultSet rs = null;
+        PreparedStatement instrucaoSQL = null;
+        
+        try {
+            
+            Class.forName(DRIVER);
+            conexao = Conexao.abrirConexao();
+
+            String sql = "select codCliente from Clientes where cpf = ?";
+            
+            instrucaoSQL = conexao.prepareStatement(sql);
+            
+            instrucaoSQL.setString(1, clienteBean.getCpf());
+            
+            rs = instrucaoSQL.executeQuery();
+            
+            while (rs.next()) {
+                
+                id = rs.getInt("codCliente");
+                
+            }
+            
+        } catch (Exception e) {
+            System.out.println("Erro na consulta");
+            
+        } finally {
+            
+            try {
+
+                if (rs != null) {
+                    rs.close();
+
+                }
+
+                if (instrucaoSQL != null) {
+                    instrucaoSQL.close();
+
+                }
+
+                conexao.close();
+
+            } catch (Exception e) {
+                System.out.println("Falha no fechamento da conexão");
+
+            }
+            
+        }
+        
+        return id;
         
     }
     

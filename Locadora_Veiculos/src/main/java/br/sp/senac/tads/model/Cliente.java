@@ -15,7 +15,6 @@ public class Cliente {
     private String email;
     private String contato1;
     private String contato2;
-    private String statusCLiente;
     private String rua;
     private int numero;
     private String bairro;
@@ -25,25 +24,6 @@ public class Cliente {
     private int codLogin;
 
     public Cliente() {
-    }
-
-    public Cliente(int codCliente, String nome, String cpf, String dataNascimento, String sexo, String email, String contato1, String contato2, String statusCLiente, String rua, int numero, String bairro, String cidade, String estado, String complemento, int codLogin) {
-        this.codCliente = codCliente;
-        this.nome = nome;
-        this.cpf = cpf;
-        this.dataNascimento = dataNascimento;
-        this.sexo = sexo;
-        this.email = email;
-        this.contato1 = contato1;
-        this.contato2 = contato2;
-        this.statusCLiente = statusCLiente;
-        this.rua = rua;
-        this.numero = numero;
-        this.bairro = bairro;
-        this.cidade = cidade;
-        this.estado = estado;
-        this.complemento = complemento;
-        this.codLogin = codLogin;
     }
 
     public int getCodCliente() {
@@ -108,14 +88,6 @@ public class Cliente {
 
     public void setContato2(String contato2) {
         this.contato2 = contato2;
-    }
-
-    public String getStatusCLiente() {
-        return statusCLiente;
-    }
-
-    public void setStatusCLiente(String statusCLiente) {
-        this.statusCLiente = statusCLiente;
     }
 
     public String getRua() {

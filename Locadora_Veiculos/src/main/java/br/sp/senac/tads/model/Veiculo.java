@@ -13,24 +13,10 @@ public class Veiculo {
     private String placa;
     private String cor;
     private int quilometragem;
-    private String revisao;
     private double valorVeiculo;
     private String statusVeiculo;
 
     public Veiculo() {
-    }
-
-    public Veiculo(int codVeiculo, String marca, String modelo, int ano, String placa, String cor, int quilometragem, String revisao, double valorVeiculo, String statusVeiculo) {
-        this.codVeiculo = codVeiculo;
-        this.marca = marca;
-        this.modelo = modelo;
-        this.ano = ano;
-        this.placa = placa;
-        this.cor = cor;
-        this.quilometragem = quilometragem;
-        this.revisao = revisao;
-        this.valorVeiculo = valorVeiculo;
-        this.statusVeiculo = statusVeiculo;
     }
 
     public int getCodVeiculo() {
@@ -87,14 +73,6 @@ public class Veiculo {
 
     public void setQuilometragem(int quilometragem) {
         this.quilometragem = quilometragem;
-    }
-
-    public String getRevisao() {
-        return revisao;
-    }
-
-    public void setRevisao(String revisao) {
-        this.revisao = revisao;
     }
 
     public double getValorVeiculo() {

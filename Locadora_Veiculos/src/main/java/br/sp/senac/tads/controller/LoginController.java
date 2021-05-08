@@ -19,7 +19,7 @@ public class LoginController {
         
         loginDAO.cadastrarLogin(loginBean, tipo);
         
-        int codLogin = loginDAO.consultarLogin(loginBean);
+        int codLogin = loginDAO.pegarId(loginBean);
         
         return codLogin;
         
@@ -33,7 +33,7 @@ public class LoginController {
     
     public void statusLoginController(Login loginBean) {
         
-        loginDAO.desativarAtivarLogin(loginBean);
+        //loginDAO.desativarAtivarLogin(loginBean);
         
     }
     
@@ -54,5 +54,6 @@ public class LoginController {
         return listaLogin;
         
     }
+
     
 }

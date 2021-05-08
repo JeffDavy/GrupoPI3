@@ -9,16 +9,9 @@ public class Login {
     private int codLogin;
     private String usuario;
     private String senha;
-    private String statusLogin;
+    private String tipo;
 
     public Login() {
-    }
-
-    public Login(int codLogin, String usuario, String senha, String statusLogin) {
-        this.codLogin = codLogin;
-        this.usuario = usuario;
-        this.senha = senha;
-        this.statusLogin = statusLogin;
     }
 
     public int getCodLogin() {
@@ -45,14 +38,13 @@ public class Login {
         this.senha = senha;
     }
 
-    public String getStatusLogin() {
-        return statusLogin;
+    public String getTipo() {
+        return tipo;
     }
 
-    public void setStatusLogin(String statusLogin) {
-        this.statusLogin = statusLogin;
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
-    
     
     
 }

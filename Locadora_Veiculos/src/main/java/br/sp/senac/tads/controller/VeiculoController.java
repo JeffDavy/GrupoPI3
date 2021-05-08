@@ -29,7 +29,7 @@ public class VeiculoController {
     
     public void statusVeiculoController(Veiculo veiculoBean) {
         
-        veiculoDAO.desativarAtivarVeiculo(veiculoBean);
+        //veiculoDAO.desativarAtivarVeiculo(veiculoBean);
         
     }
     

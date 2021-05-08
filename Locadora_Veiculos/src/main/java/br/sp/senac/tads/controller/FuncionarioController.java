@@ -35,7 +35,7 @@ public class FuncionarioController {
     
     public void statusFuncionarioController(Funcionario funcBean) {
         
-        funcionarioDAO.desativarAtivarCliente(funcBean);
+        //funcionarioDAO.desativarAtivarCliente(funcBean);
         
     }
     

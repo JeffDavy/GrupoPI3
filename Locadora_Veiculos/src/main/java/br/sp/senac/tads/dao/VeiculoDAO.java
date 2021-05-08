@@ -30,7 +30,7 @@ public class VeiculoDAO {
             Class.forName(DRIVER);
             conexao = Conexao.abrirConexao();
 
-            String sql = "insert into Veiculos (marca, modelo, ano, placa, cor, quilometragem, revisao, valorVeiculo) values (?,?,?,?,?,?,?,?)";
+            String sql = "insert into Veiculos (marca, modelo, ano, placa, cor, quilometragem, valorVeiculo) values (?,?,?,?,?,?,?)";
 
             PreparedStatement instrucaoSQL = conexao.prepareStatement(sql);
 
@@ -40,8 +40,7 @@ public class VeiculoDAO {
             instrucaoSQL.setString(4, veiculoBean.getPlaca());
             instrucaoSQL.setString(5, veiculoBean.getCor());
             instrucaoSQL.setInt(6, veiculoBean.getQuilometragem());
-            instrucaoSQL.setString(7, veiculoBean.getRevisao());
-            instrucaoSQL.setDouble(8, veiculoBean.getValorVeiculo());
+            instrucaoSQL.setDouble(7, veiculoBean.getValorVeiculo());
 
             int linhasAfetadas = instrucaoSQL.executeUpdate();
 
@@ -69,7 +68,7 @@ public class VeiculoDAO {
             Class.forName(DRIVER);
             conexao = Conexao.abrirConexao();
 
-            String sql = "update Veiculos set marca = ?, modelo = ?, ano = ?, placa = ?, cor = ?, quilometragem = ?, revisao = ?, valorVeiculo = ? where codVeiculo = ?";
+            String sql = "update Veiculos set marca = ?, modelo = ?, ano = ?, placa = ?, cor = ?, quilometragem = ?, valorVeiculo = ? where codVeiculo = ?";
 
             PreparedStatement instrucaoSQL = conexao.prepareStatement(sql);
 
@@ -79,9 +78,8 @@ public class VeiculoDAO {
             instrucaoSQL.setString(4, veiculoBean.getPlaca());
             instrucaoSQL.setString(5, veiculoBean.getCor());
             instrucaoSQL.setInt(6, veiculoBean.getQuilometragem());
-            instrucaoSQL.setString(7, veiculoBean.getRevisao());
-            instrucaoSQL.setDouble(8, veiculoBean.getValorVeiculo());
-            instrucaoSQL.setInt(9, veiculoBean.getCodVeiculo());
+            instrucaoSQL.setDouble(7, veiculoBean.getValorVeiculo());
+            instrucaoSQL.setInt(8, veiculoBean.getCodVeiculo());
 
             int linhasAfetadas = instrucaoSQL.executeUpdate();
 
@@ -102,45 +100,7 @@ public class VeiculoDAO {
 
     }
 
-    public void desativarAtivarVeiculo(Veiculo veiculoBean) {
-
-        try {
-
-            Class.forName(DRIVER);
-            conexao = Conexao.abrirConexao();
-
-            String sql = "update Veiculos set statusVeiculo = ? where codVeiculo = ?";
-
-            PreparedStatement instrucaoSQL = conexao.prepareStatement(sql);
-
-            instrucaoSQL.setString(1, veiculoBean.getStatusVeiculo());
-            instrucaoSQL.setInt(2, veiculoBean.getCodVeiculo());
-
-            int linhasAfetadas = instrucaoSQL.executeUpdate();
-
-            if (linhasAfetadas > 0) {
-
-                if (veiculoBean.getStatusVeiculo().equals("1")) {
-                    System.out.println("Veículo ATIVADO!");
-
-                } else {
-                    System.out.println("Veículo DESATIVADO!");
-
-                }
-
-            } else {
-                throw new Exception();
-
-            }
-
-            conexao.close();
-
-        } catch (Exception e) {
-            System.out.println("Erro ao iniciar conexão com o BD");
-
-        }
-
-    }
+    //** REMOVER VEICULO
 
     public ArrayList<Veiculo> consultarVeiculo(Veiculo veiculoBean) {
 
@@ -173,7 +133,6 @@ public class VeiculoDAO {
                 veiculo.setPlaca(rs.getString("placa"));
                 veiculo.setCor(rs.getString("cor"));
                 veiculo.setQuilometragem(rs.getInt("quilometragem"));
-                veiculo.setRevisao(rs.getString("revisao"));
                 veiculo.setValorVeiculo(rs.getDouble("valorVeiculo"));
                 veiculo.setStatusVeiculo(rs.getString("statusVeiculo"));
 
@@ -223,12 +182,10 @@ public class VeiculoDAO {
             Class.forName(DRIVER);
             conexao = Conexao.abrirConexao();
 
-            String sql = "select * from Veiculos where statusVeiculo = ?";
+            String sql = "select * from Veiculos";
 
             instrucaoSQL = conexao.prepareStatement(sql);
             
-            instrucaoSQL.setString(1, veiculoBean.getStatusVeiculo());
-
             rs = instrucaoSQL.executeQuery();
             
             while (rs.next()) {
@@ -242,7 +199,6 @@ public class VeiculoDAO {
                 veiculo.setPlaca(rs.getString("placa"));
                 veiculo.setCor(rs.getString("cor"));
                 veiculo.setQuilometragem(rs.getInt("quilometragem"));
-                veiculo.setRevisao(rs.getString("revisao"));
                 veiculo.setValorVeiculo(rs.getDouble("valorVeiculo"));
                 veiculo.setStatusVeiculo(rs.getString("statusVeiculo"));
 
@@ -279,6 +235,61 @@ public class VeiculoDAO {
         
         return listaVeiculo;
 
+    }
+    
+    public int pegarId(Veiculo veiculoBean) {
+        
+        int id = 0;
+        ResultSet rs = null;
+        PreparedStatement instrucaoSQL = null;
+        
+        try {
+            
+            Class.forName(DRIVER);
+            conexao = Conexao.abrirConexao();
+
+            String sql = "select codVeiculo from Veiculos where placa = ?";
+            
+            instrucaoSQL = conexao.prepareStatement(sql);
+            
+            instrucaoSQL.setString(1, veiculoBean.getPlaca());
+            
+            rs = instrucaoSQL.executeQuery();
+            
+            while (rs.next()) {
+                
+                id = rs.getInt("codVeiculo");
+                
+            }
+            
+        } catch (Exception e) {
+            System.out.println("Erro na consulta");
+            
+        } finally {
+            
+            try {
+
+                if (rs != null) {
+                    rs.close();
+
+                }
+
+                if (instrucaoSQL != null) {
+                    instrucaoSQL.close();
+
+                }
+
+                conexao.close();
+
+            } catch (Exception e) {
+                System.out.println("Falha no fechamento da conexão");
+
+            }
+            
+        }
+        
+        return id;
+        
     }
 
 }

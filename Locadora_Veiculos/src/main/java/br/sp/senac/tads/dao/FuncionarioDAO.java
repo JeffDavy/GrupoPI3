@@ -93,45 +93,7 @@ public class FuncionarioDAO {
         
     }
     
-    public void desativarAtivarCliente(Funcionario funcBean) {
-        
-        try {
-            
-            Class.forName(DRIVER);
-            conexao = Conexao.abrirConexao();
-
-            String sql = "update Funcionarios set statusFuncionario = ? where codFuncionario = ?";
-
-            PreparedStatement instrucaoSQL = conexao.prepareStatement(sql);
-            
-            instrucaoSQL.setString(1, funcBean.getStatusFuncionario());
-            instrucaoSQL.setInt(2, funcBean.getCodFuncionario());
-            
-            int linhasAfetadas = instrucaoSQL.executeUpdate();
-
-            if (linhasAfetadas > 0) {
-
-                if (funcBean.getStatusFuncionario().equals("1")) {
-                    System.out.println("Cliente ATIVADO!");
-
-                } else {
-                    System.out.println("Cliente DESATIVADO!");
-
-                }
-
-            } else {
-                throw new Exception();
-
-            }
-
-            conexao.close();
-            
-        } catch (Exception e) {
-            System.out.println("Erro ao iniciar conexão com o BD");
-            
-        }
-        
-    }
+    //Remover funcionario
     
     public ArrayList<Funcionario> consultarFuncionario(Funcionario funcBean) {
         
@@ -162,7 +124,6 @@ public class FuncionarioDAO {
                 funcionario.setNome(rs.getString("nome"));
                 funcionario.setEmail(rs.getString("email"));
                 funcionario.setTipo(rs.getString("tipo"));
-                funcionario.setStatusFuncionario(rs.getString("statusFuncionario"));
                 
                 listaFuncionario.add(funcionario);
                 
@@ -212,12 +173,10 @@ public class FuncionarioDAO {
             Class.forName(DRIVER);
             conexao = Conexao.abrirConexao();
 
-            String sql = "select * from Funcionarios where statusFuncionario = ?";
+            String sql = "select * from Funcionarios";
             
             instrucaoSQL = conexao.prepareStatement(sql);
             
-            instrucaoSQL.setString(1, funcBean.getStatusFuncionario());
-
             rs = instrucaoSQL.executeQuery();
             
             while (rs.next()) {
@@ -229,7 +188,6 @@ public class FuncionarioDAO {
                 funcionario.setNome(rs.getString("nome"));
                 funcionario.setEmail(rs.getString("email"));
                 funcionario.setTipo(rs.getString("tipo"));
-                funcionario.setStatusFuncionario(rs.getString("statusFuncionario"));
                 
                 listaFuncionario.add(funcionario);
                 
@@ -262,6 +220,61 @@ public class FuncionarioDAO {
         }
         
         return listaFuncionario;
+        
+    }
+    
+    public int pegarId(Funcionario funcBean) {
+        
+        int id = 0;
+        ResultSet rs = null;
+        PreparedStatement instrucaoSQL = null;
+        
+        try {
+            
+            Class.forName(DRIVER);
+            conexao = Conexao.abrirConexao();
+
+            String sql = "select codFuncionario from Clientes where email = ?";
+            
+            instrucaoSQL = conexao.prepareStatement(sql);
+            
+            instrucaoSQL.setString(1, funcBean.getEmail());
+            
+            rs = instrucaoSQL.executeQuery();
+            
+            while (rs.next()) {
+                
+                id = rs.getInt("codFuncionario");
+                
+            }
+            
+        } catch (Exception e) {
+            System.out.println("Erro na consulta");
+            
+        } finally {
+            
+            try {
+
+                if (rs != null) {
+                    rs.close();
+
+                }
+
+                if (instrucaoSQL != null) {
+                    instrucaoSQL.close();
+
+                }
+
+                conexao.close();
+
+            } catch (Exception e) {
+                System.out.println("Falha no fechamento da conexão");
+
+            }
+            
+        }
+
+        return id;
         
     }
     

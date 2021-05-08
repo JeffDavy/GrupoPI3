@@ -1,7 +1,6 @@
 package br.sp.senac.tads.controller;
 
 import br.sp.senac.tads.dao.ClienteDAO;
-import br.sp.senac.tads.dao.LoginDAO;
 import br.sp.senac.tads.model.Cliente;
 import br.sp.senac.tads.model.Login;
 import java.util.ArrayList;
@@ -36,7 +35,7 @@ public class ClienteController {
     
     public void statusClienteController(Cliente clienteBean) {
         
-        clienteDAO.desativarAtivarCliente(clienteBean);
+        //clienteDAO.desativarAtivarCliente(clienteBean);
         
     }
     
@@ -57,6 +56,14 @@ public class ClienteController {
         clienteDAO.listarClientes(clienteBean);
         
         return listaCliente;
+        
+    }
+    
+    public int pegarIdController(Cliente clienteBean) {
+        
+        int id = clienteDAO.pegarId(clienteBean);
+        
+        return id;
         
     }
     

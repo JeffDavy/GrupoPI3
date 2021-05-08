@@ -18,17 +18,17 @@ public class VeiculoMain {
         /**
          * CADASTRAR VEÍCULO
          */
-//        veiculoBean.setMarca("Volks");
-//        veiculoBean.setModelo("Fox");
-//        veiculoBean.setAno(2014);
-//        veiculoBean.setPlaca("EEW0970");
-//        veiculoBean.setCor("Branca");
-//        veiculoBean.setQuilometragem(12000);
-//        veiculoBean.setRevisao("1");
-//        veiculoBean.setValorVeiculo(250.00);
-//        veiculoBean.setStatusVeiculo("1");
-//        
-//        veiculoControl.cadastrarVeiculoController(veiculoBean);
+        veiculoBean.setMarca("Volks");
+        veiculoBean.setModelo("Fox");
+        veiculoBean.setAno(2014);
+        veiculoBean.setPlaca("EEW0970");
+        veiculoBean.setCor("Branca");
+        veiculoBean.setQuilometragem(12000);
+        veiculoBean.setValorVeiculo(250.00);
+        veiculoBean.setStatusVeiculo("1");
+        
+        veiculoControl.cadastrarVeiculoController(veiculoBean);
+
         /**
          * EDITAR VEÍCULO
          */
