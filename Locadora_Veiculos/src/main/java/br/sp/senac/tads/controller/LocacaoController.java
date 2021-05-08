@@ -5,10 +5,13 @@
  */
 package br.sp.senac.tads.controller;
 
+import java.util.Date;
+
 /**
  *
  * @author Administrador
  */
-public class LocacaoController {
+public class LocacaoController 
+{
     
 }
