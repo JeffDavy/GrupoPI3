@@ -21,14 +21,16 @@ public class LocacaoDAO {
     public LocacaoDAO() {
     }
     
-    public void realizarLocacao(Locacao locacaoDao) {
+    public boolean realizarLocacao(Locacao locacaoDao) {
+        
+        boolean status = false;
         
         try {
             
             Class.forName(DRIVER);
             conexao = Conexao.abrirConexao();
 
-            String sql = "insert into Locacoes (codLocacao, Veiculos_codVeiculo, Clientes_codCliente, Funcionarios_codFuncionario, marcaVeiculo, modeloVeiculo, anoVeiculo, placaVeiculo, valorVeiculo, dataLocacao) values (?,?,?,?,?,?,?,?,?)";
+            String sql = "insert into Locacoes (Veiculos_codVeiculo, Clientes_codCliente, Funcionarios_codFuncionario, marcaVeiculo, modeloVeiculo, anoVeiculo, placaVeiculo, valorVeiculo, dataLocacao) values (?,?,?,?,?,?,?,?,?)";
 
             PreparedStatement instrucaoSQL = conexao.prepareStatement(sql);
             
@@ -40,13 +42,13 @@ public class LocacaoDAO {
             instrucaoSQL.setInt(6, locacaoDao.getAnoVeiculo());
             instrucaoSQL.setString(7, locacaoDao.getPlacaVeiculo());
             instrucaoSQL.setDouble(8, locacaoDao.getValorVeiculo());
-            instrucaoSQL.setDate(9, locacaoDao.getDataLocacao());
+            instrucaoSQL.setString(9, locacaoDao.getDataLocacao());
                        
             int linhasAfetadas = instrucaoSQL.executeUpdate();
 
             if (linhasAfetadas > 0) {
-                System.out.println("Locação realizada!");
-
+                status = true;
+                
             } else {
                 throw new Exception();
 
@@ -57,6 +59,7 @@ public class LocacaoDAO {
         } catch (Exception e) {
         }
         
+        return status;
         
     }
     

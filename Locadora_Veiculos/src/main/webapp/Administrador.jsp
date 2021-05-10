@@ -35,7 +35,7 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Locação</a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" >Realizar</a>
+                            <a class="dropdown-item" data-toggle="modal" data-target="#ModalLocacao">Realizar</a>
                             <a class="dropdown-item" href="#">Consultar</a>
                             <a class="dropdown-item" href="#">Cancelar</a>
                             <a class="dropdown-item" href="#">Listar</a>
@@ -81,6 +81,64 @@
         </nav>
 
         <!-- Modal das telas -->
+        
+        <!-- LOCAÇÃO -->
+        <div class="modal fade" id="ModalLocacao" tabindex="-1" role="dialog" aria-labelledby="TituloModalLocacao" aria-hidden="true">
+
+            <div class="modal-dialog" role="document">
+
+                <div class="modal-content">
+
+                    <div class="modal-header">
+
+                        <h5 class="modal-title" id="TituloModalLocacao">Realizar locação</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+
+                    </div>
+
+                    <div class="modal-body">
+
+                        <div class="form-group">
+
+                            <form action="RealizarLocacaoServlet" method="POST">
+                                
+                                <label for="cpfCliente">CPF do Cliente</label>
+                                <input type="text" name="cpfCliente" class="form-control" id="cpfCliente" placeholder="Informe o CPF do Cliente">
+                                <br>
+
+                                <label for="placaVeiculoLocacao">Placa do Veículo</label>
+                                <input type="text" name="placaVeiculoLocacao" class="form-control" id="placaVeiculoLocacao" placeholder="Informe a placa do Veículo">
+                                <br>
+                                
+                                <label for="emailFuncionario">E-mail do Funcionário</label>
+                                <input type="text" name="emailFuncionario" class="form-control" id="emailFuncionario" placeholder="Informe o E-mail do Funcionário">
+                                <br>
+                                
+                                <label for="dataLocacao">Data atual</label>
+                                <input type="text" name="dataLocacao" class="form-control" id="dataLocacao" placeholder="Informe a data atual">
+                                <br>
+                               
+
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                <button type="submit" class="btn btn-primary">Finalizar</button>
+
+                            </form>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+
+                </div>
+
+            </div>
+
+        </div>
 
         <!-- CLIENTES -->
         <div class="modal fade" id="ModalCliente" tabindex="-1" role="dialog" aria-labelledby="TituloModalCliente" aria-hidden="true">
@@ -304,8 +362,6 @@
             </div>
 
         </div>
-
-    </div>
 
     <!-- CONFIRMAÇÃO DE EDIÇÃO VEÍCULO-->
     <div class="modal fade" id="EditarVeiculo" tabindex="-1" role="dialog" aria-labelledby="TituloModalEdicaoVeiculo" aria-hidden="true">

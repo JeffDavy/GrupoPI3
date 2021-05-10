@@ -3,6 +3,7 @@ package br.sp.senac.tads.controller;
 import br.sp.senac.tads.model.VeiculoDAO;
 import br.sp.senac.tads.bean.Veiculo;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -34,7 +35,7 @@ public class VeiculoController {
         
     }
     
-    public ArrayList consultarVeiculosController(Veiculo veiculoBean) {
+    public ArrayList<Veiculo> consultarVeiculosController(Veiculo veiculoBean) {
         
         ArrayList<Veiculo> listaVeiculo = new ArrayList<Veiculo>();
         

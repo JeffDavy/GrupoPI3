@@ -17,7 +17,7 @@ public class Locacao {
     private int anoVeiculo;
     private String placaVeiculo;
     private double valorVeiculo;
-    private Date dataLocacao;
+    private String dataLocacao;
 
     public Locacao() {
     }
@@ -94,13 +94,15 @@ public class Locacao {
         this.valorVeiculo = valorVeiculo;
     }
 
-    public Date getDataLocacao() {
+    public String getDataLocacao() {
         return dataLocacao;
     }
 
-    public void setDataLocacao(Date dataLocacao) {
+    public void setDataLocacao(String dataLocacao) {
         this.dataLocacao = dataLocacao;
     }
+
+    
     
     
 }

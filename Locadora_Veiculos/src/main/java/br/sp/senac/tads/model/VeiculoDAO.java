@@ -115,11 +115,11 @@ public class VeiculoDAO {
             Class.forName(DRIVER);
             conexao = Conexao.abrirConexao();
 
-            String sql = "select * from Veiculos where codVeiculo = ?";
+            String sql = "select codVeiculo, marca, modelo, ano, placa, valorVeiculo from Veiculos where placa = ?";
 
             instrucaoSQL = conexao.prepareStatement(sql);
 
-            instrucaoSQL.setInt(1, veiculoBean.getCodVeiculo());
+            instrucaoSQL.setString(1, veiculoBean.getPlaca());
 
             rs = instrucaoSQL.executeQuery();
 
@@ -132,10 +132,7 @@ public class VeiculoDAO {
                 veiculo.setModelo(rs.getString("modelo"));
                 veiculo.setAno(rs.getInt("ano"));
                 veiculo.setPlaca(rs.getString("placa"));
-                veiculo.setCor(rs.getString("cor"));
-                veiculo.setQuilometragem(rs.getInt("quilometragem"));
                 veiculo.setValorVeiculo(rs.getDouble("valorVeiculo"));
-                veiculo.setStatusVeiculo(rs.getString("statusVeiculo"));
 
                 listaVeiculo.add(veiculo);
 

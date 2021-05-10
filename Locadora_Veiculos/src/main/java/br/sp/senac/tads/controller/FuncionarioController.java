@@ -63,4 +63,10 @@ public class FuncionarioController {
         
     }
     
+    public int pegarIdFuncionarioController(Funcionario funcControl) {
+        
+        return funcionarioDAO.pegarId(funcControl);
+        
+    }
+    
 }

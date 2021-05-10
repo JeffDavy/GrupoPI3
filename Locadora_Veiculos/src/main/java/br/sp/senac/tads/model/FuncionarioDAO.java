@@ -235,7 +235,7 @@ public class FuncionarioDAO {
             Class.forName(DRIVER);
             conexao = Conexao.abrirConexao();
 
-            String sql = "select codFuncionario from Clientes where email = ?";
+            String sql = "select codFuncionario from Funcionarios where email = ?";
             
             instrucaoSQL = conexao.prepareStatement(sql);
             

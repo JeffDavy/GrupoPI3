@@ -65,9 +65,7 @@ public class ClienteController {
     
     public int pegarIdController(Cliente clienteBean) {
         
-        int id = clienteDAO.pegarId(clienteBean);
-        
-        return id;
+        return clienteDAO.pegarId(clienteBean);
         
     }
     
