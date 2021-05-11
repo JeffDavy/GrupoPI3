@@ -60,7 +60,9 @@ public class FuncionarioDAO {
         
     }
     
-    public void alterarFuncionario(Funcionario funcBean) {
+    public boolean alterarFuncionario(Funcionario funcBean) {
+        
+        boolean status = false;
         
         try {
             
@@ -78,7 +80,7 @@ public class FuncionarioDAO {
             int linhasAfetadas = instrucaoSQL.executeUpdate();
 
             if (linhasAfetadas > 0) {
-                System.out.println("Funcionário Alterado!");
+                status = true;
 
             } else {
                 throw new Exception();
@@ -92,9 +94,43 @@ public class FuncionarioDAO {
             
         }
         
+        return status;
+        
     }
     
-    //Remover funcionario
+    public boolean removerFuncionario(Funcionario funcBean) {
+        
+        boolean status = false;
+        
+        try {
+            
+            Class.forName(DRIVER);
+            conexao = Conexao.abrirConexao();
+
+            String sql = "delete from Funcionarios where codFuncionario = ?";
+
+            PreparedStatement instrucaoSQL = conexao.prepareStatement(sql);
+            
+            instrucaoSQL.setInt(1, funcBean.getCodFuncionario());
+            
+            int linhasAfetadas = instrucaoSQL.executeUpdate();
+
+            if (linhasAfetadas > 0) {
+                status = true;
+
+            } else {
+                throw new Exception();
+
+            }
+            
+        } catch (Exception e) {
+            System.out.println("Erro ao iniciar conexão com o BD");
+            
+        }
+        
+        return status;
+        
+    }
     
     public ArrayList<Funcionario> consultarFuncionario(Funcionario funcBean) {
         

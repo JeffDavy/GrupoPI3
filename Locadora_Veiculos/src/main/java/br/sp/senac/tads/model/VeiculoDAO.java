@@ -62,8 +62,10 @@ public class VeiculoDAO {
         
     }
 
-    public void alterarVeiculo(Veiculo veiculoBean) {
-
+    public boolean alterarVeiculo(Veiculo veiculoBean) {
+        
+        boolean status = false;
+        
         try {
 
             Class.forName(DRIVER);
@@ -85,7 +87,7 @@ public class VeiculoDAO {
             int linhasAfetadas = instrucaoSQL.executeUpdate();
 
             if (linhasAfetadas > 0) {
-                System.out.println("Alterado!");
+                status = true;
 
             } else {
                 throw new Exception();
@@ -98,10 +100,44 @@ public class VeiculoDAO {
             System.out.println("Erro ao iniciar conexão com o BD");
 
         }
+        
+        return status;
 
     }
 
-    //** REMOVER VEICULO
+    public boolean removerVeiculo(Veiculo veiculoBean) {
+        
+        boolean status = false;
+        
+        try {
+            
+            Class.forName(DRIVER);
+            conexao = Conexao.abrirConexao();
+
+            String sql = "delete from Veiculos where codVeiculo = ?";
+
+            PreparedStatement instrucaoSQL = conexao.prepareStatement(sql);
+            
+            instrucaoSQL.setInt(1, veiculoBean.getCodVeiculo());
+            
+            int linhasAfetadas = instrucaoSQL.executeUpdate();
+
+            if (linhasAfetadas > 0) {
+                status = true;
+
+            } else {
+                throw new Exception();
+
+            }
+            
+        } catch (Exception e) {
+            System.out.println("Erro ao iniciar conexão com o BD");
+            
+        }
+        
+        return status;
+        
+    }
 
     public ArrayList<Veiculo> consultarVeiculo(Veiculo veiculoBean) {
 
@@ -198,7 +234,6 @@ public class VeiculoDAO {
                 veiculo.setCor(rs.getString("cor"));
                 veiculo.setQuilometragem(rs.getInt("quilometragem"));
                 veiculo.setValorVeiculo(rs.getDouble("valorVeiculo"));
-                veiculo.setStatusVeiculo(rs.getString("statusVeiculo"));
 
                 listaVeiculo.add(veiculo);
 

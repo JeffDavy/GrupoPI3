@@ -19,27 +19,23 @@ public class ClienteController {
     
     public boolean cadastrarClienteController(Cliente clienteBean, Login loginBean) {
         
-        boolean status = false;
-        
         int codLogin = loginController.cadastrarLoginController(loginBean, "c");
         
         clienteBean.setCodLogin(codLogin);
         
-        status = clienteDAO.cadastrarCliente(clienteBean);
-        
-        return status;
+        return clienteDAO.cadastrarCliente(clienteBean);
         
     }
     
-    public void alterarCLienteController(Cliente clienteBean) {
+    public boolean alterarCLienteController(Cliente clienteBean) {
         
-        clienteDAO.alterarCliente(clienteBean);
+        return clienteDAO.alterarCliente(clienteBean);
         
     }
     
-    public void statusClienteController(Cliente clienteBean) {
+    public boolean removerClienteController(Cliente clienteBean) {
         
-        //clienteDAO.desativarAtivarCliente(clienteBean);
+        return clienteDAO.removerCliente(clienteBean);
         
     }
     

@@ -44,7 +44,7 @@ public class RealizarLocacaoServlet extends HttpServlet {
         int codFuncionario = funcControl.pegarIdFuncionarioController(funcBean);
         
         veiculoBean.setPlaca(request.getParameter("placaVeiculoLocacao"));        
-        listaVeiculo = veiculoControl.consultarVeiculosController(veiculoBean);
+        listaVeiculo = veiculoControl.consultarVeiculoController(veiculoBean);
         
         locBean.setCodCliente(codCliente);
         locBean.setCodFuncionario(codFuncionario);

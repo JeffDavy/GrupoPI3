@@ -19,26 +19,24 @@ public class LocacaoMain {
     
     public static void main(String[] args) {
         
-        Locacao lm = new Locacao();
-        Funcionario fm = new Funcionario();
-        Cliente cm = new Cliente();
-        Veiculo vb = new Veiculo();
-
-        LocacaoController lc = new LocacaoController();
-        FuncionarioController fc = new FuncionarioController();
-        ClienteController cc = new ClienteController();
-        VeiculoController vc = new VeiculoController();
-        
-        vb.setPlaca("EEW0970");
-        ArrayList<Veiculo> lista = vc.consultarVeiculosController(vb);
-        
-        for (Veiculo list : lista) {
-            
-            System.out.println("Veiculo: " + list.getMarca());
-            
-        }
-        
-        
+//        Locacao lm = new Locacao();
+//        Funcionario fm = new Funcionario();
+//        Cliente cm = new Cliente();
+//        Veiculo vb = new Veiculo();
+//
+//        LocacaoController lc = new LocacaoController();
+//        FuncionarioController fc = new FuncionarioController();
+//        ClienteController cc = new ClienteController();
+//        VeiculoController vc = new VeiculoController();
+//        
+//        vb.setPlaca("EEW0970");
+//        ArrayList<Veiculo> lista = vc.consultarVeiculoController(vb);
+//        
+//        for (Veiculo list : lista) {
+//            
+//            System.out.println("Veiculo: " + list.getMarca());
+//            
+//        }
         
     }
     

@@ -1,7 +1,6 @@
 package br.sp.senac.tads.model;
 
 import br.sp.senac.tads.bean.Login;
-import br.sp.senac.tads.bean.Veiculo;
 import br.sp.senac.util.Conexao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -20,8 +19,10 @@ public class LoginDAO {
     public LoginDAO() {
     }
 
-    public void cadastrarLogin(Login loginBean, String tipo) {
-
+    public boolean cadastrarLogin(Login loginBean, String tipo) {
+        
+        boolean status = false;
+        
         try {
 
             Class.forName(DRIVER);
@@ -38,7 +39,7 @@ public class LoginDAO {
             int linhasAfetadas = instrucaoSQL.executeUpdate();
 
             if (linhasAfetadas > 0) {
-                System.out.println("Login Cadastrado!");
+                status = true;
 
             } else {
                 throw new Exception();
@@ -51,11 +52,15 @@ public class LoginDAO {
             System.out.println("Erro ao iniciar a conexão com o BD.");
 
         }
+        
+        return status;
 
     }
 
-    public void alterarLogin(Login loginBean) {
+    public boolean alterarLogin(Login loginBean) {
 
+        boolean status = false;
+        
         try {
 
             Class.forName(DRIVER);
@@ -72,7 +77,7 @@ public class LoginDAO {
             int linhasAfetadas = instrucaoSQL.executeUpdate();
 
             if (linhasAfetadas > 0) {
-                System.out.println("Login Alterado!");
+                status = true;
 
             } else {
                 throw new Exception();
@@ -85,10 +90,44 @@ public class LoginDAO {
             System.out.println("Erro ao iniciar conexão com o BD");
 
         }
-
+        
+        return status;
+        
     }
 
-    //Remover Login
+    public boolean removerLogin(Login loginBean) {
+        
+        boolean status = false;
+        
+        try {
+            
+            Class.forName(DRIVER);
+            conexao = Conexao.abrirConexao();
+
+            String sql = "delete from Logins where codLogin = ?";
+
+            PreparedStatement instrucaoSQL = conexao.prepareStatement(sql);
+            
+            instrucaoSQL.setInt(1, loginBean.getCodLogin());
+            
+            int linhasAfetadas = instrucaoSQL.executeUpdate();
+
+            if (linhasAfetadas > 0) {
+                status = true;
+
+            } else {
+                throw new Exception();
+
+            }
+            
+        } catch (Exception e) {
+            System.out.println("Erro ao iniciar conexão com o BD");
+            
+        }
+        
+        return status;
+        
+    }
 
     public boolean validarLogin(Login loginBean) {
 

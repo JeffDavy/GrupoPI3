@@ -3,7 +3,6 @@ package br.sp.senac.tads.controller;
 import br.sp.senac.tads.model.VeiculoDAO;
 import br.sp.senac.tads.bean.Veiculo;
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
@@ -23,23 +22,33 @@ public class VeiculoController {
         return status;
     }
     
-    public void alterarVeiculoController(Veiculo veiculoBean) {
+    public boolean alterarVeiculoController(Veiculo veiculoBean) {
         
-        veiculoDAO.alterarVeiculo(veiculoBean);
-        
-    }
-    
-    public void statusVeiculoController(Veiculo veiculoBean) {
-        
-        //veiculoDAO.desativarAtivarVeiculo(veiculoBean);
+        return veiculoDAO.alterarVeiculo(veiculoBean);
         
     }
     
-    public ArrayList<Veiculo> consultarVeiculosController(Veiculo veiculoBean) {
+    public boolean removerVeiculoController(Veiculo veiculoBean) {
+                
+        return veiculoDAO.removerVeiculo(veiculoBean);
+        
+    }
+    
+    public ArrayList<Veiculo> consultarVeiculoController(Veiculo veiculoBean) {
         
         ArrayList<Veiculo> listaVeiculo = new ArrayList<Veiculo>();
         
         listaVeiculo = veiculoDAO.consultarVeiculo(veiculoBean);
+        
+        return listaVeiculo;
+        
+    }
+    
+    public ArrayList<Veiculo> listarVeiculosController(Veiculo veiculoBean) {
+        
+        ArrayList<Veiculo> listaVeiculo = new ArrayList<Veiculo>();
+        
+        listaVeiculo = veiculoDAO.listarVeiculos(veiculoBean);
         
         return listaVeiculo;
         

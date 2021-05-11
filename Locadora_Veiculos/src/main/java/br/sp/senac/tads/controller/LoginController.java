@@ -25,23 +25,21 @@ public class LoginController {
         
     }
     
-    public void alterarLoginController(Login loginBean) {
+    public boolean alterarLoginController(Login loginBean) {
         
-        loginDAO.alterarLogin(loginBean);
+        return loginDAO.alterarLogin(loginBean);
         
     }
     
-    public void statusLoginController(Login loginBean) {
+    public boolean removerLoginController(Login loginBean) {
         
-        //loginDAO.desativarAtivarLogin(loginBean);
+        return loginDAO.removerLogin(loginBean);
         
     }
     
     public boolean validarLoginController(Login loginBean) {
         
-        boolean status = loginDAO.validarLogin(loginBean);
-        
-        return status;
+        return loginDAO.validarLogin(loginBean);
         
     }
     

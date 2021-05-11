@@ -19,27 +19,23 @@ public class FuncionarioController {
     
     public boolean cadastrarFuncionarioController(Funcionario funcBean, Login loginBean, String tipo) {
         
-        boolean status = false;
-        
         int codLogin = loginController.cadastrarLoginController(loginBean, tipo);
         
         funcBean.setCodLogin(codLogin);
         
-        status = funcionarioDAO.cadastrarFuncionario(funcBean);
-        
-        return status;
+        return funcionarioDAO.cadastrarFuncionario(funcBean);
         
     }
     
-    public void alterarFuncionarioController(Funcionario funcBean) {
+    public boolean alterarFuncionarioController(Funcionario funcBean) {
         
-        funcionarioDAO.alterarFuncionario(funcBean);
+        return funcionarioDAO.alterarFuncionario(funcBean);
         
     }
     
-    public void statusFuncionarioController(Funcionario funcBean) {
+    public boolean removerFuncionarioController(Funcionario funcBean) {
         
-        //funcionarioDAO.desativarAtivarCliente(funcBean);
+        return funcionarioDAO.removerFuncionario(funcBean);
         
     }
     

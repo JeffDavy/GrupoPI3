@@ -71,7 +71,9 @@ public class ClienteDAO {
         
     }
     
-    public void alterarCliente(Cliente clienteBean) {
+    public boolean alterarCliente(Cliente clienteBean) {
+        
+        boolean status = false;
         
         try {
             
@@ -99,7 +101,7 @@ public class ClienteDAO {
             int linhasAfetadas = instrucaoSQL.executeUpdate();
 
             if (linhasAfetadas > 0) {
-                System.out.println("Cliente Alterado!");
+                status = true;
 
             } else {
                 throw new Exception();
@@ -113,9 +115,43 @@ public class ClienteDAO {
             
         }
         
+        return status;
+        
     }
     
-    /** Remover Cliente */
+    public boolean removerCliente(Cliente clienteBean) {
+        
+        boolean status = false;
+        
+        try {
+            
+            Class.forName(DRIVER);
+            conexao = Conexao.abrirConexao();
+
+            String sql = "delete from Clientes where cpf = ?";
+
+            PreparedStatement instrucaoSQL = conexao.prepareStatement(sql);
+            
+            instrucaoSQL.setString(1, clienteBean.getCpf());
+            
+            int linhasAfetadas = instrucaoSQL.executeUpdate();
+
+            if (linhasAfetadas > 0) {
+                status = true;
+
+            } else {
+                throw new Exception();
+
+            }
+            
+        } catch (Exception e) {
+            System.out.println("Erro ao iniciar conexão com o BD");
+            
+        }
+        
+        return status;
+        
+    }
     
     public boolean validarCliente(Cliente clienteBean) {
         

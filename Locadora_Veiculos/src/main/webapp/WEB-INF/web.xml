@@ -20,6 +20,10 @@
         <servlet-name>RealizarLocacaoServlet</servlet-name>
         <servlet-class>br.sp.senac.servlet.RealizarLocacaoServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ClienteRemoverServlet</servlet-name>
+        <servlet-class>br.sp.senac.servlet.ClienteRemoverServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ClienteServlet</servlet-name>
         <url-pattern>/ClienteServlet</url-pattern>
@@ -39,6 +43,10 @@
     <servlet-mapping>
         <servlet-name>RealizarLocacaoServlet</servlet-name>
         <url-pattern>/RealizarLocacaoServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ClienteRemoverServlet</servlet-name>
+        <url-pattern>/ClienteRemoverServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
