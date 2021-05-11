@@ -144,7 +144,7 @@ public class FuncionarioDAO {
             Class.forName(DRIVER);
             conexao = Conexao.abrirConexao();
 
-            String sql = "select * from Funcionario where codFuncionario = ?";
+            String sql = "select * from Funcionarios where codFuncionario = ?";
             
             instrucaoSQL = conexao.prepareStatement(sql);
 
@@ -175,13 +175,11 @@ public class FuncionarioDAO {
 
                 if (rs != null) {
                     rs.close();
-                    System.out.println("Funcionario existe! Fim");
 
                 }
 
                 if (instrucaoSQL != null) {
                     instrucaoSQL.close();
-                    System.out.println("Funcionario não existe. Fim");
 
                 }
 

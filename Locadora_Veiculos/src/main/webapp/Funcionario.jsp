@@ -1,9 +1,10 @@
 <%-- 
-    Document   : Administrador
-    Created on : 8 de mai de 2021, 16:36:28
+    Document   : Funcionario
+    Created on : 11 de mai de 2021, 19:53:56
     Author     : Administrador
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -70,7 +71,7 @@
                         <div class="dropdown-menu">
                             <a class="dropdown-item" data-toggle="modal" data-target="#ModalFuncionario">Cadastrar</a>
                             <a class="dropdown-item" data-toggle="modal" data-target="#EditarFuncionario">Editar</a>
-                            <a class="dropdown-item" data-toggle="modal" data-target="#RemoverFuncionario">Desativar</a>
+                            <a class="dropdown-item" href="#">Desativar</a>
                             <a class="dropdown-item" href="#">Listar</a>
                         </div>
                     </li>
@@ -487,7 +488,8 @@
 
                     <div class="modal-header">
 
-                        <h5 class="modal-title" id="TituloModalEdicaoFuncionario">Informe o e-mail do funcionário</h5>
+
+                        <h5 class="modal-title" id="TituloModalEdicaoFuncionario">Informe o usuário do funcionário</h5>
 
                         <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
                             <span aria-hidden="true">&times;</span>
@@ -495,20 +497,20 @@
 
                     </div>
 
-                        <div class="modal-body">
-                            
-                            <form action="FuncionarioAlterarServlet" method="POST">
-                                
-                                <label for="emailFunc">E-mail</label>
-                                <input type="text" name="emailFunc" class="form-control" id="emailFunc" placeholder="E-mail do funcionário">
-                                <br>
+                    <div class="modal-body">
 
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                                <button type="submit" class="btn btn-primary">Enviar</button>
-                            
-                            </form>
+                        <fomr action="FuncionarioAlterarServlet" method="POST">
 
-                        </div>
+                            <label for="usuarioFuncionario">Usuário</label>
+                            <input type="text" class="form-control" id="usuarioFuncionario" placeholder="Usuário do funcionário">
+                            <br>
+
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                            <button type="submit" class="btn btn-primary">Enviar</button>
+
+                        </fomr>
+
+                    </div>
 
                     </fomr>
 
@@ -518,54 +520,55 @@
             </div>
 
         </div>
-        
-        <!-- REMOÇÃO DE FUNCIONÁRIO-->
-        <div class="modal fade" id="RemoverFuncionario" tabindex="-1" role="dialog" aria-labelledby="TituloModalEdicaoFuncionario" aria-hidden="true">
-
-            <div class="modal-dialog modal-dialog-centered" role="document">
-
-                <div class="modal-content">
-
-                    <div class="modal-header">
-
-                        <h5 class="modal-title" id="TituloModalEdicaoFuncionario">Informe o e-mail do funcionário</h5>
-
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-
-                    </div>
-
-                        <div class="modal-body">
-                            
-                            <form action="FuncionarioRemoverServlet" method="POST">
-                                
-                                <label for="RemailFunc">E-mail</label>
-                                <input type="text" name="RemailFunc" class="form-control" id="RemailFunc" placeholder="E-mail do funcionário">
-                                <br>
-
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                                <button type="submit" class="btn btn-primary">Enviar</button>
-                            
-                            </form>
-
-                        </div>
-
-                    </fomr>
-
-
-                </div>
-
-            </div>
-
-        </div>
-
 
         <main role="main" class="container">
 
             <div class="starter-template">
-                <h1><br>Relatório mensal</h1>
-                <p class="lead">Será exibido o relatório de locações do mês.</p>
+                <h1><br>Funcionário</h1>
+
+                <c:forEach var="funcionario" items="${listaFunc}">
+
+                    <form action="FuncionarioCadastroServlet" method="POST">
+                        
+                        <label for="codFuncionario">Código</label>
+                        <input type="text" name="codFuncionario" class="form-control" id="codFuncionario" value="${funcionario.codFuncionario}">
+                        <br>
+                        
+                        <label for="nomeFuncionario">Nome Completo</label>
+                        <input type="text" name="nomeFuncionario" class="form-control" id="nomeFuncionario" value="${funcionario.nome}">
+                        <br>
+
+                        <label for="emailFuncionario">Endereço de email</label>
+                        <input type="email" name="emailFuncionario" class="form-control" id="emailFuncionario" value="${funcionario.email}">
+                        <br>
+
+                        <label for="tipoFuncioanrio">Tipo de funcionário</label>
+                        <input type="email" name="tipoFuncioanrio" class="form-control" id="tipoFuncioanrio" value="${funcionario.tipo}">
+                        <br>
+
+                        <br>
+                        <label><h6>Informações de acesso:</h6></label>
+                        <br>
+
+                        <label for="usuarioFuncionario">Usuário</label>
+                        <input type="text" name="usuarioFuncionario" class="form-control" id="usuarioFuncionario" placeholder="Informe o usuário">
+                        <br>
+
+                        <label for="senhaFuncionario">Senha</label>
+                        <input type="password" name="senhaFuncionario" class="form-control" id="senhaFuncionario" placeholder="Informe a senha">
+                        <br>
+
+                        <label for="senhaConfFuncionario">Confirmação</label>
+                        <input type="password" class="form-control" id="senhaConfFuncionario" placeholder="Confirme a senha">
+                        <br>
+
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Enviar</button>
+
+                    </form>
+
+                </c:forEach>
+
             </div>
 
         </main><!-- /.container -->

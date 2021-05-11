@@ -39,7 +39,7 @@ public class FuncionarioController {
         
     }
     
-    public ArrayList consultarFuncionarioController(Funcionario funcBean) {
+    public ArrayList<Funcionario> consultarFuncionarioController(Funcionario funcBean) {
         
         ArrayList<Funcionario> listaFuncionario = new ArrayList<Funcionario>();
         

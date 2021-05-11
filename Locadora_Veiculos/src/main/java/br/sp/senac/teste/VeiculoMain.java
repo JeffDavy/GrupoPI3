@@ -63,15 +63,15 @@ public class VeiculoMain {
         
     
         /** LISTAR VEÍCULOS*/
-//        veiculoBean.setCodVeiculo(1);
-//
-//        ArrayList<Veiculo> listaVeiculo = new ArrayList<Veiculo>();
-//
-//        listaVeiculo = veiculoControl.consultarVeiculoController(veiculoBean);
-//
-//        for (int i = 0; i < listaVeiculo.size(); i++) {
-//            System.out.println("aula : " + listaVeiculo.get(i));
-//        }
+        veiculoBean.setCodVeiculo(1);
+
+        ArrayList<Veiculo> listaVeiculo = new ArrayList<Veiculo>();
+
+        listaVeiculo = veiculoControl.consultarVeiculoController(veiculoBean);
+
+        for (int i = 0; i < listaVeiculo.size(); i++) {
+            System.out.println("aula : " + listaVeiculo.get(i));
+        }
 
     }
 

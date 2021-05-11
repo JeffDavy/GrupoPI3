@@ -24,6 +24,14 @@
         <servlet-name>ClienteRemoverServlet</servlet-name>
         <servlet-class>br.sp.senac.servlet.ClienteRemoverServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>FuncionarioAlterarServlet</servlet-name>
+        <servlet-class>br.sp.senac.servlet.FuncionarioAlterarServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>FuncionarioRemoverServlet</servlet-name>
+        <servlet-class>br.sp.senac.servlet.FuncionarioRemoverServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ClienteServlet</servlet-name>
         <url-pattern>/ClienteServlet</url-pattern>
@@ -47,6 +55,14 @@
     <servlet-mapping>
         <servlet-name>ClienteRemoverServlet</servlet-name>
         <url-pattern>/ClienteRemoverServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FuncionarioAlterarServlet</servlet-name>
+        <url-pattern>/FuncionarioAlterarServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FuncionarioRemoverServlet</servlet-name>
+        <url-pattern>/FuncionarioRemoverServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

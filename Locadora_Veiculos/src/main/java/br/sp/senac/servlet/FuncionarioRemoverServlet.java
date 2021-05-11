@@ -1,7 +1,6 @@
 package br.sp.senac.servlet;
 
 import br.sp.senac.tads.bean.Funcionario;
-import br.sp.senac.tads.bean.Login;
 import br.sp.senac.tads.controller.FuncionarioController;
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -13,26 +12,22 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Jeferson Davi
  */
-public class FuncionarioCadastroServlet extends HttpServlet {
-
+public class FuncionarioRemoverServlet extends HttpServlet {
    
-    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
-        Funcionario funcBean = new Funcionario();
-        Login loginBean = new Login();
+        FuncionarioController fc = new FuncionarioController();
         
-        FuncionarioController funcControl = new FuncionarioController();
+        Funcionario fb = new Funcionario();
         
-        funcBean.setNome(request.getParameter("nomeFuncionario"));
-        funcBean.setEmail(request.getParameter("emailFuncionario"));
-        funcBean.setTipo(request.getParameter("tipoFunc"));
+        fb.setEmail(request.getParameter("RemailFunc"));
         
-        loginBean.setUsuario(request.getParameter("usuarioFuncionario"));
-        loginBean.setSenha(request.getParameter("senhaFuncionario"));
+        int codFuncionario = fc.pegarIdFuncionarioController(fb);
         
-        boolean status = funcControl.cadastrarFuncionarioController(funcBean, loginBean, funcBean.getTipo());
+        fb.setCodFuncionario(codFuncionario);
+        
+        boolean status = fc.removerFuncionarioController(fb);
         
         if (status) {
             response.sendRedirect("sucesso.jsp");
