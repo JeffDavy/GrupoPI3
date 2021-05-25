@@ -47,7 +47,7 @@ public class LoginController {
         
         ArrayList<Login> listaLogin = new ArrayList<Login>();
         
-        listaLogin = loginDAO.listarLogins(loginBean);
+        listaLogin = loginDAO.listarLogins();
         
         return listaLogin;
         

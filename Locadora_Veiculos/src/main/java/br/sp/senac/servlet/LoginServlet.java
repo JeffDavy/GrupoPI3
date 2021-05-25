@@ -1,12 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.sp.senac.servlet;
 
 import br.sp.senac.tads.bean.Login;
+import br.sp.senac.tads.controller.LoginController;
+import br.sp.senac.tads.model.LoginDAO;
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,52 +19,36 @@ import javax.servlet.http.HttpSession;
 @WebServlet(name = "Login", urlPatterns = {"/Login"})
 public class LoginServlet extends HttpServlet {
 
+    
+       
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        HttpSession sessao = request.getSession();
-        if (sessao.getAttribute("usuarioLogado") != null) {
-            // Usuario já está logado -> redireciona para /menu-principal
-            response.sendRedirect(request.getContextPath() + "/index");
-            return;
-        }
-        request.getRequestDispatcher("/WEB-INF/login.jsp")
-                .forward(request, response);
-
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-
-        request.setCharacterEncoding("UTF-8");
-        String login = request.getParameter("usuario");
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        
+        Login loginBean = new Login();
+        
+        LoginController lControl = new LoginController();
+   
+        loginBean.setUsuario(request.getParameter("usuarioFuncionario"));
+        loginBean.setSenha(request.getParameter("senhaFuncionario"));
+        
+        String recebe = request.getParameter("codLogin");
+        int codLogin = Integer.parseInt(recebe);
+        String usuario = request.getParameter("usuario");
+        String tipo = request.getParameter("tipo");
         String senha = request.getParameter("senha");
 
-//        Login login = new br.sp.senac.controller.LoginController().getValidarLoginController(login);
-//
-//        if (login != null) {
-//
-//            if (login.validarLogin(senha)) {
-//
-//                HttpSession sessao = request.getSession();
-//                sessao.setAttribute("usuarioLogado", login);
-//                response.sendRedirect(request.getContextPath() + "/index");
-//                return;
-//
-//            } else {
-//
-//                request.setAttribute("senhaAtt", true);
-//                request.getRequestDispatcher("/WEB-INF/login.jsp")
-//                        .forward(request, response);
-//
-//            }
-
-//        } else {
-//            request.setAttribute("usuarioAtt", true);
-//            request.getRequestDispatcher("/WEB-INF/login.jsp")
-//                    .forward(request, response);
-//
-//        }
+        Login login = new Login(codLogin, usuario, senha, tipo);
+//        boolean ok = LoginDAO.cadastrarLogin(login,0);
+        
+        boolean ok = lControl.validarLoginController(loginBean);
+        
+        if (ok) {
+            response.sendRedirect("sucesso.jsp");
+            
+        } else {
+            response.sendRedirect("erro.jsp");
+            
+        }
+        
     }
 }

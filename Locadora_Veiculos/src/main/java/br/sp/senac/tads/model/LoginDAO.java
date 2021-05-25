@@ -209,7 +209,7 @@ public class LoginDAO {
 
     }
 
-    public ArrayList<Login> listarLogins(Login loginBean) {
+    public ArrayList<Login> listarLogins() {
 
         ResultSet rs = null;
         PreparedStatement instrucaoSQL = null;
