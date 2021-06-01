@@ -1,8 +1,11 @@
 package br.sp.senac.servlet;
 
 import br.sp.senac.tads.bean.Login;
+import br.sp.senac.tads.bean.Usuario;
 import br.sp.senac.tads.controller.LoginController;
 import br.sp.senac.tads.model.LoginDAO;
+import br.sp.senac.tads.model.UsuarioDAO;
+import br.sp.senac.util.CryptoUtils;
 import java.io.IOException;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -16,39 +19,27 @@ import javax.servlet.http.HttpSession;
  *
  * @author dilaz
  */
-@WebServlet(name = "Login", urlPatterns = {"/Login"})
 public class LoginServlet extends HttpServlet {
 
-    
-       
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        
-        Login loginBean = new Login();
-        
-        LoginController lControl = new LoginController();
-   
-        loginBean.setUsuario(request.getParameter("usuarioFuncionario"));
-        loginBean.setSenha(request.getParameter("senhaFuncionario"));
-        
-        String recebe = request.getParameter("codLogin");
-        int codLogin = Integer.parseInt(recebe);
-        String usuario = request.getParameter("usuario");
-        String tipo = request.getParameter("tipo");
-        String senha = request.getParameter("senha");
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String login = request.getParameter("login");
+        String senhaAberta = request.getParameter("senha");
 
-        Login login = new Login(codLogin, usuario, senha, tipo);
-//        boolean ok = LoginDAO.cadastrarLogin(login,0);
-        
-        boolean ok = lControl.validarLoginController(loginBean);
-        
-        if (ok) {
-            response.sendRedirect("sucesso.jsp");
-            
+        Usuario usuario = UsuarioDAO.getUsuario(login);
+        if (usuario == null) {
+            response.sendRedirect("login.jsp?erroLogin=true");
         } else {
-            response.sendRedirect("erro.jsp");
-            
+            boolean senhaOK = CryptoUtils.validarSenha(senhaAberta, usuario.getSenha());
+            if (senhaOK) { // Login OK
+                HttpSession sessao = request.getSession();
+                sessao.setAttribute("usuario", usuario);
+                response.sendRedirect("protegido/index.jsp");
+            } else { // Login falhou
+                response.sendRedirect("login.jsp?erroLogin=true");
+            }
         }
-        
+
     }
 }
