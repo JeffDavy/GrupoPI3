@@ -33,8 +33,5 @@ public class UsuarioDAO {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return usuario;
-        
-        
     }
-    
 }

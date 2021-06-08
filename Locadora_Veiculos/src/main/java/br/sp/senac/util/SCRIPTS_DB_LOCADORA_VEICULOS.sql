@@ -122,5 +122,3 @@ select * from Logins;
 select * from Clientes;
 select * from Funcionarios;
 select * from Veiculos;
-
-

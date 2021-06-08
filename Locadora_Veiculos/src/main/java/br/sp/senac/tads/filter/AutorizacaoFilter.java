@@ -37,24 +37,25 @@ public class AutorizacaoFilter implements Filter {
     public AutorizacaoFilter() {
     }
 
-   private void doBeforeProcessing(ServletRequest request, ServletResponse response)
-            throws IOException, ServletException {
+   private void doBeforeProcessing(ServletRequest request, ServletResponse response)throws IOException, ServletException 
+   {
         System.out.println("FILTRO EXECUTADO!");
+        
         HttpServletRequest httpServletRequest = (HttpServletRequest) request;
         HttpServletResponse httpServletResponse = (HttpServletResponse) response;
+        
         // PASSO 1 - USUARIO ESTA LOGADO?
         HttpSession session = httpServletRequest.getSession();
-        if (session.getAttribute("usuario") == null) {
+        if (session.getAttribute("usuario") == null) 
+        {
             httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + "/login.jsp");
         }
         
         // PASSO 2 - USUARIO TEM PERMISSAO?
-       
-        if (!verificarAcesso(httpServletRequest)) {
+        if (!verificarAcesso(httpServletRequest)) 
+        {
             httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + "/acessoNegado.jsp");
         }
-        
-        
     }    
     
    

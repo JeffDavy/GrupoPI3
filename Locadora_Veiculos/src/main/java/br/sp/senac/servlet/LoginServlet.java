@@ -22,12 +22,13 @@ import javax.servlet.http.HttpSession;
 public class LoginServlet extends HttpServlet {
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException 
+    {
         String login = request.getParameter("login");
         String senhaAberta = request.getParameter("senha");
 
         Usuario usuario = UsuarioDAO.getUsuario(login);
+        
         if (usuario == null) {
             response.sendRedirect("login.jsp?erroLogin=true");
         } else {
@@ -40,6 +41,5 @@ public class LoginServlet extends HttpServlet {
                 response.sendRedirect("login.jsp?erroLogin=true");
             }
         }
-
     }
 }

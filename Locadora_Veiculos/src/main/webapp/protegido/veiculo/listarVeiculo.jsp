@@ -1,7 +1,7 @@
 <%-- 
-    Document   : sucesso
-    Created on : 8 de mai de 2021, 15:52:17
-    Author     : Administrador
+    Document   : listarVeiculo
+    Created on : 13 de mai de 2021, 10:37:21
+    Author     : Jeferson Davi
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -9,9 +9,9 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Veículo</title>
     </head>
     <body>
-        <h1>SUCESSO!</h1>
+        <h1>Veículos</h1>
     </body>
 </html>
