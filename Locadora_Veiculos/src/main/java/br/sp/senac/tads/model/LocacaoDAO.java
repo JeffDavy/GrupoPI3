@@ -30,19 +30,20 @@ public class LocacaoDAO {
             Class.forName(DRIVER);
             conexao = Conexao.abrirConexao();
 
-            String sql = "insert into Locacoes (Veiculos_codVeiculo, Clientes_codCliente, Funcionarios_codFuncionario, marcaVeiculo, modeloVeiculo, anoVeiculo, placaVeiculo, valorVeiculo, dataLocacao) values (?,?,?,?,?,?,?,?,?)";
+            String sql = "insert into Locacoes (Veiculos_codVeiculo, Clientes_codCliente, Funcionarios_codFuncionario, filial, marcaVeiculo, modeloVeiculo, anoVeiculo, placaVeiculo, valorVeiculo, dataLocacao) values (?,?,?,?,?,?,?,?,?,?)";
 
             PreparedStatement instrucaoSQL = conexao.prepareStatement(sql);
             
             instrucaoSQL.setInt(1, locacaoDao.getCodVeiculo());
             instrucaoSQL.setInt(2, locacaoDao.getCodCliente());
             instrucaoSQL.setInt(3, locacaoDao.getCodFuncionario());
-            instrucaoSQL.setString(4, locacaoDao.getMarcaVeiculo());
-            instrucaoSQL.setString(5, locacaoDao.getModeloVeiculo());
-            instrucaoSQL.setInt(6, locacaoDao.getAnoVeiculo());
-            instrucaoSQL.setString(7, locacaoDao.getPlacaVeiculo());
-            instrucaoSQL.setDouble(8, locacaoDao.getValorVeiculo());
-            instrucaoSQL.setString(9, locacaoDao.getDataLocacao());
+            instrucaoSQL.setString(4, locacaoDao.getFilial());
+            instrucaoSQL.setString(5, locacaoDao.getMarcaVeiculo());
+            instrucaoSQL.setString(6, locacaoDao.getModeloVeiculo());
+            instrucaoSQL.setInt(7, locacaoDao.getAnoVeiculo());
+            instrucaoSQL.setString(8, locacaoDao.getPlacaVeiculo());
+            instrucaoSQL.setDouble(9, locacaoDao.getValorVeiculo());
+            instrucaoSQL.setString(10, locacaoDao.getDataLocacao());
                        
             int linhasAfetadas = instrucaoSQL.executeUpdate();
 
@@ -53,8 +54,6 @@ public class LocacaoDAO {
                 throw new Exception();
 
             }
-
-            conexao.close();
             
         } catch (Exception e) {
         }

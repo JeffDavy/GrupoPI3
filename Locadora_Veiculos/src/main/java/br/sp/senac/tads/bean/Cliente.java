@@ -22,6 +22,7 @@ public class Cliente {
     private String estado;
     private String complemento;
     private int codLogin;
+    private String estatus;
 
     public Cliente() {
     }
@@ -145,7 +146,15 @@ public class Cliente {
     public void setCodLogin(int codLogin) {
         this.codLogin = codLogin;
     }
-   
+
+    public String getEstatus() {
+        return estatus;
+    }
+
+    public void setEstatus(String estatus) {
+        this.estatus = estatus;
+    }
+
     
 
 }

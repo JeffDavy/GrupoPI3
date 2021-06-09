@@ -25,9 +25,10 @@ CREATE TABLE Veiculos (
 CREATE TABLE Funcionarios (
   codFuncionario INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
   Logins_codLogin INTEGER UNSIGNED NOT NULL,
-  nome VARCHAR(20) NOT NULL,
+  nomeFuncionario VARCHAR(20) NOT NULL,
   email VARCHAR(30) NOT NULL,
   tipo VARCHAR(1) NOT NULL,
+  estatus VARCHAR(1) NOT NULL DEFAULT 'A',
   PRIMARY KEY(codFuncionario),
   FOREIGN KEY(Logins_codLogin)
     REFERENCES Logins(codLogin)
@@ -51,6 +52,7 @@ CREATE TABLE Clientes (
   cidade VARCHAR(20) NOT NULL,
   estado VARCHAR(2) NOT NULL,
   complemento VARCHAR(40) NULL,
+  estatus varchar(1) not null default 'A',
   PRIMARY KEY(codCliente),
   FOREIGN KEY(Logins_codLogin)
     REFERENCES Logins(codLogin)
@@ -76,6 +78,7 @@ CREATE TABLE Locacoes (
   Veiculos_codVeiculo INTEGER UNSIGNED NOT NULL,
   Clientes_codCliente INTEGER UNSIGNED NOT NULL,
   Funcionarios_codFuncionario INTEGER UNSIGNED NOT NULL,
+  filial VARCHAR(30) NOT NULL DEFAULT 'Matriz',
   marcaVeiculo VARCHAR(15) NOT NULL,
   modeloVeiculo VARCHAR(20) NOT NULL,
   anoVeiculo INTEGER UNSIGNED NOT NULL,
@@ -122,3 +125,22 @@ select * from Logins;
 select * from Clientes;
 select * from Funcionarios;
 select * from Veiculos;
+
+##POR MARCA DE VEÍCULO
+select filial, codLocacao, CLientes.codCliente, Clientes.nome, Funcionarios.codFuncionario, Funcionarios.nomeFuncionario, Veiculos_codVeiculo, marcaVeiculo, modeloVeiculo, anoVeiculo, placaVeiculo, valorVeiculo, dataLocacao from Locacoes
+inner join Clientes on Clientes.codCliente = Locacoes.Clientes_codCliente
+inner join Funcionarios on Funcionarios.codFuncionario = Locacoes.Funcionarios_codFuncionario
+ where marcaVeiculo = ? and dataLocacao between(?) and (?);
+ 
+ ##POR CLIENTE
+ select filial, codLocacao, CLientes.codCliente, Clientes.nome, Funcionarios.codFuncionario, Funcionarios.nome, Veiculos_codVeiculo, marcaVeiculo, modeloVeiculo, anoVeiculo, placaVeiculo, valorVeiculo, dataLocacao from Locacoes
+inner join Clientes on Clientes.codCliente = Locacoes.Clientes_codCliente
+inner join Funcionarios on Funcionarios.codFuncionario = Locacoes.Funcionarios_codFuncionario
+where Clientes_codCliente = ? and dataLocacao between(?) and (?);
+
+##POR FILIAL
+ select filial, codLocacao, CLientes.codCliente, Clientes.nome, Funcionarios.codFuncionario, Funcionarios.nomeFuncionario, Veiculos_codVeiculo, marcaVeiculo, modeloVeiculo, anoVeiculo, placaVeiculo, valorVeiculo, dataLocacao from Locacoes
+inner join Clientes on Clientes.codCliente = Locacoes.Clientes_codCliente
+inner join Funcionarios on Funcionarios.codFuncionario = Locacoes.Funcionarios_codFuncionario
+where filial = 'Embu' and dataLocacao between('2021-06-06') and ('2021-06-08');
+

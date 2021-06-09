@@ -98,7 +98,7 @@ public class FuncionarioDAO {
         
     }
     
-    public boolean removerFuncionario(Funcionario funcBean) {
+    public boolean statusFuncionario(Funcionario funcBean) {
         
         boolean status = false;
         
@@ -107,11 +107,12 @@ public class FuncionarioDAO {
             Class.forName(DRIVER);
             conexao = Conexao.abrirConexao();
 
-            String sql = "delete from Funcionarios where codFuncionario = ?";
+            String sql = "update Funcionarios set estatus = ? where codFuncionario = ?";
 
             PreparedStatement instrucaoSQL = conexao.prepareStatement(sql);
             
-            instrucaoSQL.setInt(1, funcBean.getCodFuncionario());
+            instrucaoSQL.setString(1, funcBean.getEstatus());
+            instrucaoSQL.setInt(2, funcBean.getCodFuncionario());
             
             int linhasAfetadas = instrucaoSQL.executeUpdate();
 

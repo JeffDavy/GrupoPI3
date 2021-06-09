@@ -128,11 +128,12 @@ public class ClienteDAO {
             Class.forName(DRIVER);
             conexao = Conexao.abrirConexao();
 
-            String sql = "delete from Clientes where cpf = ?";
+            String sql = "update Clientes set estatus = ? where cpf = ?";
 
             PreparedStatement instrucaoSQL = conexao.prepareStatement(sql);
             
-            instrucaoSQL.setString(1, clienteBean.getCpf());
+            instrucaoSQL.setString(1, clienteBean.getEstatus());
+            instrucaoSQL.setString(2, clienteBean.getCpf());
             
             int linhasAfetadas = instrucaoSQL.executeUpdate();
 

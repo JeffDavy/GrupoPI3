@@ -16,9 +16,7 @@ public class LocacaoController {
     
     
     public boolean realizarLocacaoController(Locacao locBean) {
-        
-        boolean status = false;
-               
+                       
         return locacaoDAO.realizarLocacao(locBean);
         
     }

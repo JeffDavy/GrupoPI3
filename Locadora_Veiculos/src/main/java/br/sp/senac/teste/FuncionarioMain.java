@@ -19,16 +19,16 @@ public class FuncionarioMain {
         FuncionarioController fc = new FuncionarioController();
         
         /** CADASTRAR FUNCIONÁRIO*/
-//        fm.setNome("Adalberto Souza");
-//        fm.setEmail("adalberto@email.com");
-//        fm.setTipo("f");
-//        
-//        lm.setUsuario("adalberto");
-//        lm.setSenha("1234");
-//        
-//        fc.cadastrarFuncionarioController(fm, lm, fm.getTipo());
-//        
-//        
+        fm.setNome("Adalberto Souza");
+        fm.setEmail("adalberto@email.com");
+        fm.setTipo("f");
+        
+        lm.setUsuario("adalberto");
+        lm.setSenha("1234");
+        
+        fc.cadastrarFuncionarioController(fm, lm, fm.getTipo());
+        
+        
 
         ArrayList<Funcionario> listaFunc = new ArrayList<Funcionario>();
         

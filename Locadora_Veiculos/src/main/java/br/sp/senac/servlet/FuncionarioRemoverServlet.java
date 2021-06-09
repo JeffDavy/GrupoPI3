@@ -27,7 +27,7 @@ public class FuncionarioRemoverServlet extends HttpServlet {
         
         fb.setCodFuncionario(codFuncionario);
         
-        boolean status = fc.removerFuncionarioController(fb);
+        boolean status = fc.statusFuncionarioController(fb);
         
         if (status) {
             response.sendRedirect("sucesso.jsp");

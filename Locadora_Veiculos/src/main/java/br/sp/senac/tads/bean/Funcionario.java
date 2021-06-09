@@ -11,6 +11,7 @@ public class Funcionario {
     private String nome;
     private String email;
     private String tipo;
+    private String estatus;
 
     public Funcionario() {
     }
@@ -55,4 +56,14 @@ public class Funcionario {
         this.tipo = tipo;
     }
 
+    public String getEstatus() {
+        return estatus;
+    }
+
+    public void setEstatus(String estatus) {
+        this.estatus = estatus;
+    }
+
+    
+    
 }

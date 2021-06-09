@@ -33,9 +33,9 @@ public class FuncionarioController {
         
     }
     
-    public boolean removerFuncionarioController(Funcionario funcBean) {
+    public boolean statusFuncionarioController(Funcionario funcBean) {
         
-        return funcionarioDAO.removerFuncionario(funcBean);
+        return funcionarioDAO.statusFuncionario(funcBean);
         
     }
     

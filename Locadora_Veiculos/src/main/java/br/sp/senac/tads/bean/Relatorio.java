@@ -1,48 +1,40 @@
+
 package br.sp.senac.tads.bean;
 
 /**
  *
- * @author Jeefrson Davi
+ * @author Jeferson Davi
  */
-public class Locacao {
-
+public class Relatorio {
+    
     private int codLocacao;
-    private int codVeiculo;
     private int codCliente;
+    private String nomeCliente;
     private int codFuncionario;
-    private String filial;
+    private String nomeFuncionario;
+    private String nomeFilial;
+    private int codVeiculo;
     private String marcaVeiculo;
     private String modeloVeiculo;
     private int anoVeiculo;
     private String placaVeiculo;
     private double valorVeiculo;
     private String dataLocacao;
-
-    public Locacao() {
-    }
-
-    public String getFilial() {
-        return filial;
-    }
-
-    public void setFilial(String filial) {
-        this.filial = filial;
-    }
+    private String dataUm;
+    private String dataDois;
     
+    
+    
+    public Relatorio() {
+
+    }
+
     public int getCodLocacao() {
         return codLocacao;
     }
 
     public void setCodLocacao(int codLocacao) {
         this.codLocacao = codLocacao;
-    }
-
-    public int getCodVeiculo() {
-        return codVeiculo;
-    }
-
-    public void setCodVeiculo(int codVeiculo) {
-        this.codVeiculo = codVeiculo;
     }
 
     public int getCodCliente() {
@@ -53,12 +45,44 @@ public class Locacao {
         this.codCliente = codCliente;
     }
 
+    public String getNomeCliente() {
+        return nomeCliente;
+    }
+
+    public void setNomeCliente(String nomeCliente) {
+        this.nomeCliente = nomeCliente;
+    }
+
     public int getCodFuncionario() {
         return codFuncionario;
     }
 
     public void setCodFuncionario(int codFuncionario) {
         this.codFuncionario = codFuncionario;
+    }
+
+    public String getNomeFuncionario() {
+        return nomeFuncionario;
+    }
+
+    public void setNomeFuncionario(String nomeFuncionario) {
+        this.nomeFuncionario = nomeFuncionario;
+    }
+
+    public String getNomeFilial() {
+        return nomeFilial;
+    }
+
+    public void setNomeFilial(String nomeFilial) {
+        this.nomeFilial = nomeFilial;
+    }
+
+    public int getCodVeiculo() {
+        return codVeiculo;
+    }
+
+    public void setCodVeiculo(int codVeiculo) {
+        this.codVeiculo = codVeiculo;
     }
 
     public String getMarcaVeiculo() {
@@ -109,7 +133,21 @@ public class Locacao {
         this.dataLocacao = dataLocacao;
     }
 
-    
+    public String getDataUm() {
+        return dataUm;
+    }
+
+    public void setDataUm(String dataUm) {
+        this.dataUm = dataUm;
+    }
+
+    public String getDataDois() {
+        return dataDois;
+    }
+
+    public void setDataDois(String dataDois) {
+        this.dataDois = dataDois;
+    }
     
     
 }

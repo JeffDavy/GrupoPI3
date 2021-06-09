@@ -1,26 +1,47 @@
-
 package br.sp.senac.tads.controller;
 
-import br.sp.senac.tads.bean.RelatorioModel;
+import br.sp.senac.tads.bean.Relatorio;
+import br.sp.senac.tads.model.RelatorioDAO;
 import java.util.ArrayList;
 
 /**
  *  
  * 
  *
- * @author dilaz
+ * @author Jeferson Davi
  */
 public class RelatorioController {
-       public ArrayList<RelatorioModel> getRelatorio(int filial) {
 
-        ArrayList<RelatorioModel> relatorio = new br.sp.senac.tads.model.RelatorioDAO().getRelatorio(filial);
-        return relatorio;
+    public RelatorioController() {
     }
-
-
-    public ArrayList<RelatorioModel> getRelatorioPercentual(int filial) {
-
-        ArrayList<RelatorioModel> relatorio = new br.sp.senac.tads.model.RelatorioDAO().getRelatorioPercentual(filial);
-        return relatorio;
+    
+    RelatorioDAO relatorioDAO = new RelatorioDAO();
+    
+    /** RELATÓRIO FILTRADO POR MARCA DO VEÍCULO*/
+    public ArrayList<Relatorio> relatorioMarcaController(Relatorio relBean) {
+        
+        ArrayList<Relatorio> listaMarca = new ArrayList<Relatorio>();
+        
+        return listaMarca = relatorioDAO.relatorioMarcaVeiculo(relBean);
+        
     }
+    
+    /** RELATÓRIO FILTRADO POR CLIENTE DA VENDA*/
+    public ArrayList<Relatorio> relatorioClienteController(Relatorio relBean) {
+        
+        ArrayList<Relatorio> listaCliente = new ArrayList<Relatorio>();
+        
+        return listaCliente = relatorioDAO.relatorioCliente(relBean);
+        
+    }
+    
+    /** RELATÓRIO FILTRADO POR FILIAL*/
+    public ArrayList<Relatorio> relatorioFilialController(Relatorio relBean) {
+        
+        ArrayList<Relatorio> listaFilial = new ArrayList<Relatorio>();
+        
+        return listaFilial = relatorioDAO.relatorioFilial(relBean);
+        
+    }
+    
 }
