@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author dilaz
+ * @author Jeferson Davi
  */
 public class RelatorioMain {
     
@@ -17,15 +17,28 @@ public class RelatorioMain {
         RelatorioController relControl = new RelatorioController();
         
         
-        /** TESTE RELATÓRIO POR MARCA DE VEÍCULO*/
-        relBean.setMarcaVeiculo("Honda");
+//        /** TESTE RELATÓRIO POR MARCA DE VEÍCULO*/
+//        relBean.setMarcaVeiculo("Honda");
+//        
+//        // DATA DE INICIO E FIM PARA A BUSCA
+//        relBean.setDataUm("2021-06-06");
+//        relBean.setDataDois("2021-06-08");
         
-        // DATA DE INICIO E FIM PARA A BUSCA
-        relBean.setDataUm("2021-06-06");
+        //ArrayList<Relatorio> listaMarca = relControl.relatorioMarcaController(relBean);
+        
+        
+//        relBean.setCodCliente(1);
+//        relBean.setDataUm("2021-06-06");
+//        relBean.setDataDois("2021-06-08");
+//        
+//        ArrayList<Relatorio> listaMarca = relControl.relatorioClienteController(relBean);
+        
+        relBean.setNomeFilial("Embu");
+        relBean.setDataUm("2020-06-06");
         relBean.setDataDois("2021-06-08");
         
-        ArrayList<Relatorio> listaMarca = relControl.relatorioMarcaController(relBean);
-        
+        ArrayList<Relatorio> listaMarca = relControl.relatorioFilialController(relBean);
+
         if (listaMarca.size() > 0){
             System.out.println("OK");
         } else {

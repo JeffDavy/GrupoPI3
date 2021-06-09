@@ -33,21 +33,20 @@ public class RelatorioDAO {
             Class.forName(DRIVER);
             conexao = Conexao.abrirConexao();
             
-            String sql = "select filial, codLocacao, CLientes.codCliente, Clientes.nome, Funcionarios.codFuncionario, Funcionarios.nomeFuncionario, Veiculos_codVeiculo, marcaVeiculo, modeloVeiculo, anoVeiculo, placaVeiculo, valorVeiculo, dataLocacao from Locacoes inner join Clientes on Clientes.codCliente = Locacoes.Clientes_codCliente inner join Funcionarios on Funcionarios.codFuncionario = Locacoes.Funcionarios_codFuncionario  where marcaVeiculo = ? and dataLocacao between(?) and (?)";
-            
+            String sql = "select filial, codLocacao, CLientes.codCliente, Clientes.nome, Funcionarios.codFuncionario, Funcionarios.nome as 'nomeFuncionario', Veiculos_codVeiculo, marcaVeiculo, modeloVeiculo, anoVeiculo, placaVeiculo, valorVeiculo, dataLocacao from Locacoes inner join Clientes on Clientes.codCliente = Locacoes.Clientes_codCliente inner join Funcionarios on Funcionarios.codFuncionario = Locacoes.Funcionarios_codFuncionario  where marcaVeiculo = ? and dataLocacao between ? and ?";
             
             instrucaoSQL = conexao.prepareStatement(sql);
-            
+           
             instrucaoSQL.setString(1, relBean.getMarcaVeiculo());
             instrucaoSQL.setString(2, relBean.getDataUm());
             instrucaoSQL.setString(3, relBean.getDataDois());
-            
+          
             rs = instrucaoSQL.executeQuery();
             
             while (rs.next()) {
                 
                 Relatorio rel = new Relatorio();
-                
+
                 rel.setNomeFilial(rs.getString("filial"));
                 rel.setCodLocacao(rs.getInt("codLocacao"));
                 rel.setCodCliente(rs.getInt("codCliente"));
@@ -59,10 +58,9 @@ public class RelatorioDAO {
                 rel.setModeloVeiculo(rs.getString("modeloVeiculo"));
                 rel.setAnoVeiculo(rs.getInt("anoVeiculo"));
                 rel.setPlacaVeiculo(rs.getString("placaVeiculo"));
-                rel.setValorVeiculo(rs.getInt("valorVeiculo"));
+                rel.setValorVeiculo(rs.getDouble("valorVeiculo"));
                 rel.setDataLocacao(rs.getString("dataLocacao"));
 
-    
                 listaMarca.add(rel);
                 
             }
@@ -88,11 +86,7 @@ public class RelatorioDAO {
             Class.forName(DRIVER);
             conexao = Conexao.abrirConexao();
             
-            String sql = " select filial, codLocacao, CLientes.codCliente, Clientes.nome, Funcionarios.codFuncionario, Funcionarios.nome, Veiculos_codVeiculo,"
-                    + " marcaVeiculo, modeloVeiculo, anoVeiculo, placaVeiculo, valorVeiculo, dataLocacao from Locacoes\n" +
-                        "inner join Clientes on Clientes.codCliente = Locacoes.Clientes_codCliente\n" +
-                        "inner join Funcionarios on Funcionarios.codFuncionario = Locacoes.Funcionarios_codFuncionario\n" +
-                        "where Clientes_codCliente = ? and dataLocacao between(?) and (?)";
+            String sql = " select filial, codLocacao, CLientes.codCliente, Clientes.nome, Funcionarios.codFuncionario, Funcionarios.nome as 'nomeFuncionario', Veiculos_codVeiculo, marcaVeiculo, modeloVeiculo, anoVeiculo, placaVeiculo, valorVeiculo, dataLocacao from Locacoes inner join Clientes on Clientes.codCliente = Locacoes.Clientes_codCliente inner join Funcionarios on Funcionarios.codFuncionario = Locacoes.Funcionarios_codFuncionario where Clientes_codCliente = ? and dataLocacao between ? and ?";
             
             instrucaoSQL = conexao.prepareStatement(sql);
             
@@ -117,7 +111,7 @@ public class RelatorioDAO {
                 rel.setModeloVeiculo(rs.getString("modeloVeiculo"));
                 rel.setAnoVeiculo(rs.getInt("anoVeiculo"));
                 rel.setPlacaVeiculo(rs.getString("placaVeiculo"));
-                rel.setValorVeiculo(rs.getInt("valorVeiculo"));
+                rel.setValorVeiculo(rs.getDouble("valorVeiculo"));
                 rel.setDataLocacao(rs.getString("dataLocacao"));
 
     
@@ -146,11 +140,7 @@ public class RelatorioDAO {
             Class.forName(DRIVER);
             conexao = Conexao.abrirConexao();
             
-            String sql = "select filial, codLocacao, CLientes.codCliente, Clientes.nome, Funcionarios.codFuncionario, Funcionarios.nome, Veiculos_codVeiculo, marcaVeiculo,"
-                    + " modeloVeiculo, anoVeiculo, placaVeiculo, valorVeiculo, dataLocacao from Locacoes\n" +
-                        "inner join Clientes on Clientes.codCliente = Locacoes.Clientes_codCliente\n" +
-                        "inner join Funcionarios on Funcionarios.codFuncionario = Locacoes.Funcionarios_codFuncionario\n" +
-                        "where filial = ? and dataLocacao between(?) and (?)";
+            String sql = " select filial, codLocacao, CLientes.codCliente, Clientes.nome, Funcionarios.codFuncionario, Funcionarios.nome as 'nomeFuncionario', Veiculos_codVeiculo, marcaVeiculo, modeloVeiculo, anoVeiculo, placaVeiculo, valorVeiculo, dataLocacao from Locacoes inner join Clientes on Clientes.codCliente = Locacoes.Clientes_codCliente inner join Funcionarios on Funcionarios.codFuncionario = Locacoes.Funcionarios_codFuncionario where filial = ? and dataLocacao between ? and ?";
             
             instrucaoSQL = conexao.prepareStatement(sql);
             
