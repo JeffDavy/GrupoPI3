@@ -123,24 +123,20 @@ select * from Locacoes;
 select * from Devolucoes;
 select * from Logins;
 select * from Clientes;
+
 select * from Funcionarios;
 select * from Veiculos;
 
-##POR MARCA DE VEÍCULO
-select filial, codLocacao, CLientes.codCliente, Clientes.nome, Funcionarios.codFuncionario, Funcionarios.nomeFuncionario, Veiculos_codVeiculo, marcaVeiculo, modeloVeiculo, anoVeiculo, placaVeiculo, valorVeiculo, dataLocacao from Locacoes
-inner join Clientes on Clientes.codCliente = Locacoes.Clientes_codCliente
-inner join Funcionarios on Funcionarios.codFuncionario = Locacoes.Funcionarios_codFuncionario
- where marcaVeiculo = ? and dataLocacao between(?) and (?);
- 
- ##POR CLIENTE
- select filial, codLocacao, CLientes.codCliente, Clientes.nome, Funcionarios.codFuncionario, Funcionarios.nome, Veiculos_codVeiculo, marcaVeiculo, modeloVeiculo, anoVeiculo, placaVeiculo, valorVeiculo, dataLocacao from Locacoes
-inner join Clientes on Clientes.codCliente = Locacoes.Clientes_codCliente
-inner join Funcionarios on Funcionarios.codFuncionario = Locacoes.Funcionarios_codFuncionario
-where Clientes_codCliente = ? and dataLocacao between(?) and (?);
 
-##POR FILIAL
- select filial, codLocacao, CLientes.codCliente, Clientes.nome, Funcionarios.codFuncionario, Funcionarios.nomeFuncionario, Veiculos_codVeiculo, marcaVeiculo, modeloVeiculo, anoVeiculo, placaVeiculo, valorVeiculo, dataLocacao from Locacoes
-inner join Clientes on Clientes.codCliente = Locacoes.Clientes_codCliente
-inner join Funcionarios on Funcionarios.codFuncionario = Locacoes.Funcionarios_codFuncionario
-where filial = 'Embu' and dataLocacao between('2021-06-06') and ('2021-06-08');
 
+insert into Logins (usuario, senha, perfil) values ("Cleber", "1234", "GERENTE");
+
+select * from Logins;
+
+
+alter table Logins add column filial varchar(35);
+
+alter table Logins modify column tipo varchar(20);
+
+ALTER TABLE Logins
+CHANGE tipo perfil VARCHAR(20);

@@ -44,14 +44,11 @@ public class AutorizacaoFilter implements Filter {
         HttpServletRequest httpServletRequest = (HttpServletRequest) request;
         HttpServletResponse httpServletResponse = (HttpServletResponse) response;
         
-        // PASSO 1 - USUARIO ESTA LOGADO?
         HttpSession session = httpServletRequest.getSession();
         if (session.getAttribute("usuario") == null) 
         {
             httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + "/login.jsp");
         }
-        
-        // PASSO 2 - USUARIO TEM PERMISSAO?
         if (!verificarAcesso(httpServletRequest)) 
         {
             httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + "/acessoNegado.jsp");
@@ -61,6 +58,7 @@ public class AutorizacaoFilter implements Filter {
    
     private boolean verificarAcesso(HttpServletRequest httpServletRequest) {
         String url = httpServletRequest.getRequestURI();
+        
         Usuario usuario = (Usuario) httpServletRequest.getSession().getAttribute("usuario");
         boolean acessoOk = true;
         if (

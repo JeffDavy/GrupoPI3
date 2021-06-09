@@ -6,30 +6,52 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Home</title>
     </head>
-    <!--<body>-->
+    <body>
         <br>
+        <ul class="menu">
+            <c:import url="../header.jsp"/>
+            <p>Usuário Logado: ${sessionScope.usuario.nome} | ${sessionScope.usuario.filial}</p>  
+            <li><a>Locação</a>
+                <ul>
+                    <li><a href="locacao/realizarLocacao.jsp">Realizar Locação</a></li>
+                </ul>
+            </li>
 
-     <body class="container">
-        <!--<h1>Locadora de Veículos</h1>-->
-        <c:import url="/header.jsp"/>
-        <c:if test="${param.erroLogin}">
-            <div class="alert alert-danger" role="alert">
-               Erro de Login!
-            </div>
-        </c:if>
-       
-        <form action="LoginServlet" method="POST">
-            <p>Usuario</p>
-            <input type="text" name="login"  class="form-control"/>
-            <p>Senha</p>
-            <input type="password" name="senha" class="form-control"/>
-            <br/><br/>
-            <button type="submit"  class="btn btn-primary">Enviar</button>
-        </form>
+            <li><a>Veículo</a>
+                <ul>
+                    <li><a href="veiculo/cadastrarVeiculo.jsp">Cadastrar</a></li>
+                    <li><a href="veiculo/editarVeiculo.jsp">Editar</a></li>
+                    <li><a href="veiculo/removerVeiculo.jsp">Remover</a></li>
+                    <li><a href="veiculo/listarVeiculo.jsp">Listar</a></li>
+                </ul>
+            </li>
 
-    <!--</body>-->
+            <li><a>Cliente</a>
+                <ul>
+                    <li><a href="clientes/cadastrarCliente.jsp">Cadastrar</a></li>
+                    <li><a href="clientes/editarCliente.jsp">Editar</a></li>
+                    <li><a href="clientes/removerCliente.jsp">Remover</a></li>
+                    <li><a href="clientes/listarCliente.jsp">Listar</a></li>
+                </ul>
+            </li>
+
+            <li><a>Funcionário</a>
+                <ul>
+                    <li><a href="funcionario/cadastrarFuncionario.jsp">Cadastrar</a></li>
+                    <li><a href="funcionario/editarFuncionario.jsp">Editar</a></li>
+                    <li><a href="funcionario/removerFuncionario.jsp">Remover</a></li>
+                    <li><a href="funcionario/listarFuncionario.jsp">Listar</a></li>
+                </ul>
+            </li>
+
+            <li><a>Relatório</a>
+                <ul>
+                    <li><a href="relatorio/exibirRelatorio.jsp">Exibir</a></li>
+                </ul>
+
+            </li>
+        </ul>-->
+
         <a href="Administrador.jsp">Locadora</a>
-            
-      
     </body>
 </html>

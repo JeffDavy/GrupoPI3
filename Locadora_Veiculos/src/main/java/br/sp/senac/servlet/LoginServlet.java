@@ -8,6 +8,8 @@ import br.sp.senac.tads.model.UsuarioDAO;
 import br.sp.senac.util.CryptoUtils;
 import java.io.IOException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -27,7 +29,12 @@ public class LoginServlet extends HttpServlet {
         String login = request.getParameter("login");
         String senhaAberta = request.getParameter("senha");
 
-        Usuario usuario = UsuarioDAO.getUsuario(login);
+        Usuario usuario = null;
+        try {
+            usuario = UsuarioDAO.getUsuario(login);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         if (usuario == null) {
             response.sendRedirect("login.jsp?erroLogin=true");
