@@ -13,25 +13,39 @@ import java.util.logging.Logger;
 
 public class UsuarioDAO {
     
-    public static Usuario getUsuario(String login) {
-        Usuario usuario = null;
+    static Connection conexao;
+    private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
+    
+    public UsuarioDAO() {
+    }
+    
+    public static Usuario getUsuario(String usuario) throws ClassNotFoundException {
+        
+        Usuario user = new Usuario();
         try {
-            Connection con = Conexao.getConexao();
-            String query = "select * from usuario where login=?";
-            PreparedStatement ps = con.prepareStatement(query);
-            ps.setString(1, login);
-            ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
-                usuario = new Usuario();
-                usuario.setLogin(login);
-                usuario.setFilial(rs.getString("filial"));
-                usuario.setNome(rs.getString("nome"));
-                usuario.setPerfil(rs.getString("perfil"));
-                usuario.setSenha(rs.getString("senha"));
+            
+            Class.forName(DRIVER);
+            conexao = Conexao.abrirConexao();
+            
+            String query = "select * from Logins where usuario = ?";
+            PreparedStatement instrucaoSQL = conexao.prepareStatement(query);
+            
+            instrucaoSQL.setString(1, user.getUser());
+            ResultSet rs = instrucaoSQL.executeQuery();
+            
+            if (rs.next()) 
+            {
+                user = new Usuario();
+                user.setUser(usuario);
+                user.setSenha(rs.getString("senha"));
+                user.setFilial(rs.getString("filial"));
+                user.setPerfil(rs.getString("perfil"));
             }
-        } catch (SQLException ex) {
+        } 
+        catch (SQLException ex) 
+        {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return usuario;
+        return user;
     }
 }

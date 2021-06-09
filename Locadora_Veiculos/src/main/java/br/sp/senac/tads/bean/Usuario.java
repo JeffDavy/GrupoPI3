@@ -7,17 +7,16 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Usuario {
-    private String nome;
-    private String senha;
-    private String perfil;
+    private String User;
+    private String Senha;
+    private String Perfil;
     private String filial;
-    private String login;
     
     public boolean isGerente(){
-        return perfil.equalsIgnoreCase("GERENTE");
+        return Perfil.equalsIgnoreCase("GERENTE");
     }
     
     public boolean isAdmin() {
-        return perfil.equalsIgnoreCase("ADMIN");
+        return Perfil.equalsIgnoreCase("ADMIN");
     }
 }
