@@ -18,39 +18,34 @@ import java.util.logging.Logger;
  *
  * @author joaop
  */
-public class UsuarioDAO 
-{
+public class UsuarioDAO {
+
     static Connection conexao;
     private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
-    
+
     public UsuarioDAO() {
     }
-    
-    public static Usuario getUsuario(String usuario)
-    {
+
+    public static Usuario getUsuario(String usuario) {
         Usuario user = null;
-        try
-        {
+        try {
             Class.forName(DRIVER);
             conexao = Conexao.abrirConexao();
-            
+
             String query = "select * from Logins where usuario = ?";
             PreparedStatement instrucaoSQL = conexao.prepareStatement(query);
-            
+
             instrucaoSQL.setString(1, usuario);
             ResultSet rs = instrucaoSQL.executeQuery();
-            
-            if (rs.next()) 
-            {
+
+            if (rs.next()) {
                 user = new Usuario();
                 user.setUser(usuario);
                 user.setSenha(rs.getString("senha"));
                 user.setFilial(rs.getString("filial"));
                 user.setPerfil(rs.getString("perfil"));
             }
-        }
-        catch (SQLException ex) 
-        {
+        } catch (SQLException ex) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);

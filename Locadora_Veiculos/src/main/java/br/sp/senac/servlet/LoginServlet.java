@@ -38,7 +38,8 @@ public class LoginServlet extends HttpServlet {
         else
         {
             boolean senhaOK = CryptoUtils.validarSenha(senhaAberta, usuario.getSenha());
-            if (senhaOK) 
+            String var=usuario.getSenha();
+            if (var.compareTo(senhaAberta)==0) 
             { // Login OK
                 HttpSession sessao = request.getSession();
                 sessao.setAttribute("usuario", usuario);
