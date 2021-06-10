@@ -15,7 +15,7 @@ public class Conexao {
     public static String server = "localhost";                  //ENDEREÇO DO SERVIDOR DE BANCO DE DADOS
     public static String database = "locadora_veiculos";               //NOME DO BANCO DE DADOS
     public static String login = "root";                        //USUÁRIO DO BANCO DE DADOS      
-    public static String senha = "";                       //SENHA DE ACESSO
+    public static String senha = "1234";                       //SENHA DE ACESSO
     public static String url = "";
     public static Connection CONEXAO;
 
