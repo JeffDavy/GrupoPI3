@@ -29,22 +29,24 @@ public class LoginServlet extends HttpServlet {
         String login = request.getParameter("login");
         String senhaAberta = request.getParameter("senha");
 
-        Usuario usuario = null;
-        try {
-            usuario = UsuarioDAO.getUsuario(login);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        Usuario usuario = UsuarioDAO.getUsuario(login);
         
-        if (usuario == null) {
+        if (usuario == null) 
+        {
             response.sendRedirect("login.jsp?erroLogin=true");
-        } else {
+        } 
+        else
+        {
             boolean senhaOK = CryptoUtils.validarSenha(senhaAberta, usuario.getSenha());
-            if (senhaOK) { // Login OK
+            
+            if (senhaOK) 
+            { // Login OK
                 HttpSession sessao = request.getSession();
                 sessao.setAttribute("usuario", usuario);
                 response.sendRedirect("protegido/index.jsp");
-            } else { // Login falhou
+            } 
+            else 
+            { // Login falhou
                 response.sendRedirect("login.jsp?erroLogin=true");
             }
         }

@@ -131,7 +131,7 @@ select * from Veiculos;
 
 insert into Logins (usuario, senha, perfil) values ("Cleber", "1234", "GERENTE");
 
-select * from Logins;
+select * from Logins where usuario = "Cleber";
 
 
 alter table Logins add column filial varchar(35);

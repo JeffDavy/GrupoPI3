@@ -18,7 +18,8 @@ public class CryptoUtils {
         
     }
     
-    public static boolean validarSenha(String senhaAberta, String senhaFechada) {
+    public static boolean validarSenha(String senhaAberta, String senhaFechada) 
+    {
          BCrypt.Result result = BCrypt.verifyer().verify(senhaAberta.toCharArray(), senhaFechada);
         return result.verified;
     }
@@ -26,8 +27,5 @@ public class CryptoUtils {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        String senha = "1234";
-        System.out.println("Hash = " + gerarHash(senha));
-    }
+   
 }
