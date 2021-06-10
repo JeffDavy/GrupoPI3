@@ -9,8 +9,8 @@
     <body>
         <br>
         <ul class="menu">
-            <c:import url="../header.jsp"/>
-            <p>Usuário Logado: ${sessionScope.usuario.nome} | ${sessionScope.usuario.filial}</p>  
+            <c:import url="/header.jsp"/>
+            <p>User Logado: ${sessionScope.Usuario.User} | ${sessionScope.Usuario.filial}</p>  
             <li><a>Locação</a>
                 <ul>
                     <li><a href="locacao/realizarLocacao.jsp">Realizar Locação</a></li>

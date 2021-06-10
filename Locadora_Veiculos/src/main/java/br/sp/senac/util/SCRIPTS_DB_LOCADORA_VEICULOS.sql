@@ -136,7 +136,9 @@ select * from Logins where usuario = "Cleber";
 
 alter table Logins add column filial varchar(35);
 
-alter table Logins modify column tipo varchar(20);
+alter table Logins modify column senha varchar(200);
 
 ALTER TABLE Logins
 CHANGE tipo perfil VARCHAR(20);
+
+update Logins set senha= '$2a$12$zHJb/aPSbMxCyoDn8l1AQ.yTKJKgEbXiZ3y25PmvU0OrNropd45wy';

@@ -31,19 +31,18 @@ public class LoginServlet extends HttpServlet {
 
         Usuario usuario = UsuarioDAO.getUsuario(login);
         
-        if (usuario == null) 
+        if (usuario == null)
         {
             response.sendRedirect("login.jsp?erroLogin=true");
         } 
         else
         {
             boolean senhaOK = CryptoUtils.validarSenha(senhaAberta, usuario.getSenha());
-            
             if (senhaOK) 
             { // Login OK
                 HttpSession sessao = request.getSession();
                 sessao.setAttribute("usuario", usuario);
-                response.sendRedirect("protegido/index.jsp");
+                response.sendRedirect("protegido/Administrador.jsp");
             } 
             else 
             { // Login falhou
